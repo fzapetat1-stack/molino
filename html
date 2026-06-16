@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>El Molino | Café de Especialidad - Sistema Profesional</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            font-family: 'Inter', sans-serif;
+            color: #f0ede8;
+            overflow-x: hidden;
+        }
+
+        /* Fondo con efecto sutil y partículas */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, #1a1308, #030303);
+            z-index: -2;
+        }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+            animation: floatBg 30s linear infinite;
+        }
+        @keyframes floatBg {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        /* Navegación con pestañas */
+        .tabs-nav {
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(15px);
+            padding: 0.8rem 2rem;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            color: #e8e2d4;
+            transition: 0.3s;
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tab-btn i { font-size: 1.1rem; }
+        .tab-btn:hover { color: #d4af37; background: rgba(212, 175, 55, 0.1); }
+        .tab-btn.active {
+            background: #d4af37;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Contenedor de pestañas */
+        .tab-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .tab-pane { display: none; animation: fadeIn 0.4s ease; }
+        .tab-pane.active-pane { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Hero inicio */
+        .hero-inicio {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .hero-inicio h2 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+        }
+
+        /* Menú Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .product-card {
+            background: #111111;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid #2a241b;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+        }
+        .product-img {
+            width: 100%;
+            height: 180px;
+            background: #1e1b17;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #d4af37;
+        }
+        .product-info {
+            padding: 1.2rem;
+            text-align: center;
+        }
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .product-price {
+            color: #d4af37;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+        .btn-add {
+            background: #d4af37;
+            color: #0a0a0a;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+        .btn-add:hover { background: #c7a22b; }
+
+        /* ========== BURBUJA DEL CARRITO FLOTANTE (HERMOSA) ========== */
+        .cart-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(145deg, #d4af37, #b88b2c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            animation: pulseGlow 2s infinite;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,200,0.6);
+        }
+        .cart-bubble:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px rgba(212,175,55,0.9);
+        }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        .cart-bubble i {
+            font-size: 2.2rem;
+            color: #0a0a0a;
+        }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e63946;
+            color: white;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 2px solid #0a0a0a;
+        }
+
+        /* Modal del carrito (cuando se hace clic en la burbuja) */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1100;
+            justify-content: center;
+            align-items: center;
+        }
+        .cart-modal.active {
+            display: flex;
+        }
+        .cart-modal-content {
+            background: #111;
+            border-radius: 2rem;
+            max-width: 500px;
+            width: 90%;
+            padding: 1.5rem;
+            border: 1px solid #d4af37;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .cart-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #d4af3740;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .close-cart {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #d4af37;
+        }
+        .cart-modal-items {
+            margin-bottom: 1rem;
+        }
+        .cart-modal-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #d4af3730;
+        }
+        .cart-modal-total {
+            font-weight: 800;
+            text-align: right;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #d4af37;
+        }
+        .checkout-btn {
+            background: #25D366;
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 1.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        /* Formulario de checkout dentro del modal */
+        .checkout-fields input, .checkout-fields textarea, .checkout-fields select {
+            width: 100%;
+            padding: 0.7rem;
+            margin-bottom: 0.8rem;
+            border-radius: 1rem;
+            background: #1e1b17;
+            border: 1px solid #3a3327;
+            color: white;
+        }
+
+        /* Botón Admin flotante */
+        .admin-fab {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #d4af37;
+            color: black;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+            transition: 0.3s;
+            border: none;
+        }
+        .admin-fab:hover { transform: scale(1.05); background: #c7a22b; }
+
+        /* Panel Admin */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.97);
+            z-index: 2000;
+            backdrop-filter: blur(15px);
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        .admin-panel.active { display: block; }
+        .admin-card {
+            background: #111;
+            border-radius: 2rem;
+            padding: 2rem;
+            max-width: 1300px;
+            margin: 2rem auto;
+            border: 1px solid #d4af37;
+        }
+        .close-admin {
+            float: right;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #d4af37;
+        }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+        }
+        .admin-table th, .admin-table td {
+            border: 1px solid #d4af3740;
+            padding: 8px;
+            text-align: left;
+        }
+        .admin-table th { background: #d4af37; color: black; }
+        @media (max-width: 768px) {
+            .tabs-nav { gap: 0.5rem; padding: 0.5rem; }
+            .tab-btn { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+            .cart-bubble { width: 60px; height: 60px; bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-gradient"></div>
+<div class="particles"></div>
+
+<!-- Pestañas -->
+<div class="tabs-nav">
+    <button class="tab-btn active" data-tab="inicio"><i class="fas fa-home"></i> Inicio</button>
+    <button class="tab-btn" data-tab="menu"><i class="fas fa-utensils"></i> Menú</button>
+</div>
+
+<div class="tab-container">
+    <div id="inicio" class="tab-pane active-pane">
+        <div class="hero-inicio">
+            <h2><i class="fas fa-mug-hot"></i> El Molino</h2>
+            <p>Café de especialidad · Granos selectos · Guatemala</p>
+            <p style="margin-top: 2rem;">Disfruta de una experiencia única. Explora nuestro menú y realiza tu pedido.</p>
+            <div style="margin-top: 2rem;"><i class="fas fa-star" style="color: #d4af37;"></i> <i class="fas fa-star" style="color: #d4af37;"></i> <i class="fas fa-star" style="color: #d4af37;"></i> <i class="fas fa-star" style="color: #d4af37;"></i> <i class="fas fa-star" style="color: #d4af37;"></i>
+            <p>“El mejor café de la ciudad” - Clientes satisfechos</p></div>
+        </div>
+    </div>
+    <div id="menu" class="tab-pane">
+        <h2 style="color: #d4af37; margin-bottom: 1rem;"><i class="fas fa-coffee"></i> Nuestro Menú</h2>
+        <div class="menu-grid" id="menuContainer"></div>
+    </div>
+</div>
+
+<!-- BURBUJA DEL CARRITO (hermosa y animada) -->
+<div id="cartBubble" class="cart-bubble">
+    <i class="fas fa-shopping-bag"></i>
+    <span id="cartCount" class="cart-count">0</span>
+</div>
+
+<!-- MODAL DEL CARRITO (se abre al hacer clic en la burbuja) -->
+<div id="cartModal" class="cart-modal">
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h3><i class="fas fa-shopping-cart"></i> Mi Pedido</h3>
+            <span class="close-cart" id="closeCartModal">&times;</span>
+        </div>
+        <div id="cartModalItems" class="cart-modal-items"></div>
+        <div id="cartModalTotal" class="cart-modal-total">Total: Q 0.00</div>
+        <div class="checkout-fields" id="checkoutFields">
+            <input type="text" id="modalClienteNombre" placeholder="Nombre completo" required>
+            <input type="text" id="modalClienteTelefono" placeholder="Teléfono (WhatsApp)" required>
+            <input type="text" id="modalClienteDireccion" placeholder="Dirección de entrega" required>
+            <textarea id="modalNotas" placeholder="Notas adicionales (opcional)" rows="2"></textarea>
+            <select id="modalMetodoPago">
+                <option value="POS (Tarjeta débito/crédito)">💳 POS (Tarjeta)</option>
+                <option value="Transferencia bancaria">🏦 Transferencia bancaria</option>
+                <option value="Efectivo">💵 Efectivo</option>
+            </select>
+            <button id="modalConfirmarBtn" class="checkout-btn"><i class="fab fa-whatsapp"></i> Confirmar pedido</button>
+        </div>
+    </div>
+</div>
+
+<!-- Botón Admin (solo para creador) -->
+<button id="adminAccessBtn" class="admin-fab"><i class="fas fa-database"></i></button>
+
+<!-- Panel Admin oculto -->
+<div id="adminPanel" class="admin-panel">
+    <div class="admin-card">
+        <span class="close-admin" id="closeAdmin">&times;</span>
+        <h2 style="color:#d4af37;"><i class="fas fa-chart-line"></i> Panel de Control - Todos los Pedidos</h2>
+        <p>Base de datos centralizada (Google Sheets)</p>
+        <div style="overflow-x: auto;">
+            <table class="admin-table" id="ordersTableAdmin">
+                <thead><tr><th>ID</th><th>Cliente</th><th>Teléfono</th><th>Dirección</th><th>Pedido</th><th>Total</th><th>Método Pago</th><th>Fecha</th></tr></thead>
+                <tbody id="adminTableBody"><tr><td colspan="8">Cargando pedidos...</td></tr></tbody>
+            </table>
+        </div>
+        <button id="refreshAdminBtn" style="background:#d4af37; margin-top:1rem; padding:0.5rem 1rem; border-radius:2rem; border:none; font-weight:bold;"><i class="fas fa-sync-alt"></i> Refrescar datos</button>
+    </div>
+</div>
+
+<script>
+    // ======================= CONFIGURACIÓN GOOGLE SHEETS =======================
+    // ★★★ REEMPLAZA ESTA URL CON LA URL DE TU GOOGLE APPS SCRIPT (obtenida en el paso anterior) ★★★
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_Ejemplo_Reemplazar/exec"; // <--- CAMBIA ESTA URL
+    
+    // Catálogo de productos
+    const products = [
+        { id: 1, nombre: "Café Americano", precio: 22, imagen: "fa-mug-hot", descrip: "Intenso" },
+        { id: 2, nombre: "Cappuccino", precio: 28, imagen: "fa-mug-saucer", descrip: "Espuma sedosa" },
+        { id: 3, nombre: "Iced Caramel Latte", precio: 35, imagen: "fa-ice-cream", descrip: "Refrescante" },
+        { id: 4, nombre: "Torta de Zanahoria", precio: 30, imagen: "fa-cake-candles", descrip: "Frosting" },
+        { id: 5, nombre: "Sandwich Bondiola", precio: 45, imagen: "fa-sandwich", descrip: "Ahumado" },
+        { id: 6, nombre: "Latte Especiado", precio: 32, imagen: "fa-leaf", descrip: "Chai" },
+        { id: 7, nombre: "Brownie con Helado", precio: 38, imagen: "fa-chocolate-bar", descrip: "Pecanas" },
+        { id: 8, nombre: "Té Chai", precio: 25, imagen: "fa-mug-hot", descrip: "Especias" }
+    ];
+    
+    let cart = [];
+    
+    // Renderizar menú
+    function renderMenu() {
+        const container = document.getElementById("menuContainer");
+        if(!container) return;
+        container.innerHTML = products.map(p => `
+            <div class="product-card">
+                <div class="product-img"><i class="fas ${p.imagen}" style="font-size: 4rem;"></i></div>
+                <div class="product-info">
+                    <div class="product-title">${p.nombre}</div>
+                    <div class="product-price">Q ${p.precio}</div>
+                    <button class="btn-add" data-id="${p.id}">Agregar al carrito</button>
+                </div>
+            </div>
+        `).join('');
+        document.querySelectorAll('.btn-add').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                const product = products.find(p => p.id === id);
+                if(product) addToCart(product);
+            });
+        });
+    }
+    
+    function addToCart(product) {
+        const existing = cart.find(item => item.id === product.id);
+        if(existing) existing.cantidad++;
+        else cart.push({ ...product, cantidad: 1 });
+        updateCartUI();
+        updateCartBubble();
+        Swal.fire({ icon: 'success', title: 'Agregado', text: `${product.nombre} añadido`, toast: true, position: 'top-end', showConfirmButton: false, timer: 1200, background: '#1a1a1a', color: '#d4af37' });
+    }
+    
+    function updateCartUI() {
+        // Actualizar burbuja
+        const totalItems = cart.reduce((sum, item) => sum + item.cantidad, 0);
+        document.getElementById("cartCount").innerText = totalItems;
+        // Actualizar modal si está abierto
+        renderCartModal();
+    }
+    
+    function updateCartBubble() {
+        const totalItems = cart.reduce((sum, item) => sum + item.cantidad, 0);
+        document.getElementById("cartCount").innerText = totalItems;
+    }
+    
+    function renderCartModal() {
+        const container = document.getElementById("cartModalItems");
+        const totalSpan = document.getElementById("cartModalTotal");
+        if(!container) return;
+        if(cart.length === 0) {
+            container.innerHTML = "<p style='text-align:center'>Carrito vacío</p>";
+            totalSpan.innerText = "Total: Q 0.00";
+            return;
+        }
+        let html = "";
+        let total = 0;
+        cart.forEach(item => {
+            const subtotal = item.precio * item.cantidad;
+            total += subtotal;
+            html += `<div class="cart-modal-item">
+                        <span>${item.nombre} x${item.cantidad}</span>
+                        <span>Q ${subtotal.toFixed(2)} <button class="remove-item-modal" data-id="${item.id}" style="background:none; border:none; color:#d4af37; cursor:pointer;"><i class="fas fa-trash-alt"></i></button></span>
+                    </div>`;
+        });
+        container.innerHTML = html;
+        totalSpan.innerText = `Total: Q ${total.toFixed(2)}`;
+        document.querySelectorAll('.remove-item-modal').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = parseInt(btn.getAttribute('data-id'));
+                cart = cart.filter(item => item.id !== id);
+                updateCartUI();
+                renderCartModal();
+                updateCartBubble();
+            });
+        });
+    }
+    
+    // Envío de pedido a Google Sheets y WhatsApp
+    const WHATSAPP_NUMBER = "40512960";
+    async function enviarPedidoDesdeModal() {
+        const nombre = document.getElementById("modalClienteNombre").value.trim();
+        const telefono = document.getElementById("modalClienteTelefono").value.trim();
+        const direccion = document.getElementById("modalClienteDireccion").value.trim();
+        const notas = document.getElementById("modalNotas").value;
+        const metodoPago = document.getElementById("modalMetodoPago").value;
+        
+        if(!nombre || !telefono || !direccion) {
+            Swal.fire({ icon: 'error', title: 'Campos incompletos', text: 'Completa nombre, teléfono y dirección', background: '#1a1a1a', color: '#d4af37' });
+            return;
+        }
+        if(cart.length === 0) {
+            Swal.fire({ icon: 'warning', title: 'Carrito vacío', text: 'Agrega productos al pedido', background: '#1a1a1a', color: '#d4af37' });
+            return;
+        }
+        
+        const resumenProductos = cart.map(p => `${p.nombre} x${p.cantidad}`).join(', ');
+        const total = cart.reduce((sum, p) => sum + (p.precio * p.cantidad), 0);
+        const fecha = new Date().toLocaleString('es-GT');
+        
+        const orderData = { accion: "registrarPedido", nombre, telefono, direccion, pedido: resumenProductos, total, metodoPago, fecha, notas };
+        
+        try {
+            Swal.fire({ title: 'Procesando...', allowOutsideClick: false, didOpen: () => { Swal.showLoading(); } });
+            await fetch(GOOGLE_SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(orderData) });
+            
+            // WhatsApp
+            let numeroWA = telefono.replace(/\s/g, '');
+            if(!numeroWA.startsWith('502') && !numeroWA.startsWith('+')) numeroWA = '502' + numeroWA;
+            if(!numeroWA.startsWith('+')) numeroWA = '+' + numeroWA;
+            let mensajeWA = `🌟 *NUEVO PEDIDO - EL MOLINO* 🌟%0A━━━━━━━━━━━━━━━━━━%0A👤 *Cliente:* ${nombre}%0A📞 *Teléfono:* ${telefono}%0A📍 *Dirección:* ${direccion}%0A📋 *Pedido:* ${resumenProductos}%0A💰 *Total:* Q ${total.toFixed(2)}%0A💳 *Pago:* ${metodoPago}%0A${notas ? `📝 *Notas:* ${notas}%0A` : ''}🕒 *Hora:* ${fecha}%0A✨ *Gracias por preferir El Molino* ✨`;
+            window.open(`https://wa.me/${numeroWA}?text=${mensajeWA}`, '_blank');
+            
+            cart = [];
+            updateCartUI();
+            renderCartModal();
+            updateCartBubble();
+            document.getElementById("modalClienteNombre").value = "";
+            document.getElementById("modalClienteTelefono").value = "";
+            document.getElementById("modalClienteDireccion").value = "";
+            document.getElementById("modalNotas").value = "";
+            document.getElementById("cartModal").classList.remove("active");
+            Swal.fire({ icon: 'success', title: 'Pedido enviado', text: 'Tu pedido ha sido registrado', background: '#1a1a1a', color: '#d4af37' });
+        } catch(error) {
+            Swal.fire({ icon: 'error', title: 'Error', text: 'No se pudo guardar el pedido. Revisa la URL de Google Script', background: '#1a1a1a', color: '#d4af37' });
+        }
+    }
+    
+    // Cargar pedidos para admin
+    async function loadAllOrdersForAdmin() {
+        const tbody = document.getElementById("adminTableBody");
+        if(!tbody) return;
+        tbody.innerHTML = '<tr><td colspan="8">Cargando base de datos...</td></tr>';
+        try {
+            const response = await fetch(`${GOOGLE_SCRIPT_URL}?accion=obtenerPedidos`, { method: 'GET' });
+            const data = await response.json();
+            if(data && data.pedidos && data.pedidos.length > 0) {
+                let html = '';
+                data.pedidos.forEach((ped, idx) => {
+                    html += `<tr><td>${idx+1}</td><td>${ped.nombre || ''}</td><td>${ped.telefono || ''}</td><td>${ped.direccion || ''}</td><td>${ped.pedido || ''}</td><td>Q ${parseFloat(ped.total).toFixed(2)}</td><td>${ped.metodoPago || ''}</td><td>${ped.fecha || ''}</td></tr>`;
+                });
+                tbody.innerHTML = html;
+            } else {
+                tbody.innerHTML = '<tr><td colspan="8">No hay pedidos registrados aún</td></tr>';
+            }
+        } catch(e) {
+            tbody.innerHTML = '<tr><td colspan="8">Error al cargar datos. Verifica CORS o URL del script.</td></tr>';
+        }
+    }
+    
+    // ======================= EVENTOS Y PESTAÑAS =======================
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panes = document.querySelectorAll('.tab-pane');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetId = tab.getAttribute('data-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            panes.forEach(pane => pane.classList.remove('active-pane'));
+            const targetPane = document.getElementById(targetId);
+            if(targetPane) targetPane.classList.add('active-pane');
+        });
+    });
+    
+    // Burbuja y modal
+    const cartBubble = document.getElementById("cartBubble");
+    const cartModal = document.getElementById("cartModal");
+    const closeCartModal = document.getElementById("closeCartModal");
+    cartBubble.addEventListener("click", () => {
+        renderCartModal();
+        cartModal.classList.add("active");
+    });
+    closeCartModal.addEventListener("click", () => cartModal.classList.remove("active"));
+    window.addEventListener("click", (e) => { if(e.target === cartModal) cartModal.classList.remove("active"); });
+    
+    document.getElementById("modalConfirmarBtn")?.addEventListener("click", enviarPedidoDesdeModal);
+    
+    // Admin panel
+    const adminPanel = document.getElementById("adminPanel");
+    const adminBtn = document.getElementById("adminAccessBtn");
+    const closeAdmin = document.getElementById("closeAdmin");
+    const refreshBtn = document.getElementById("refreshAdminBtn");
+    adminBtn.addEventListener("click", () => {
+        adminPanel.classList.add("active");
+        loadAllOrdersForAdmin();
+    });
+    closeAdmin.addEventListener("click", () => adminPanel.classList.remove("active"));
+    refreshBtn.addEventListener("click", loadAllOrdersForAdmin);
+    
+    renderMenu();
+    updateCartBubble();
+    
+    // Código para Google Apps Script (copiar en el editor de Scripts de tu hoja de cálculo)
+    /*
+    function doPost(e) {
+      const data = JSON.parse(e.postData.contents);
+      const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      sheet.appendRow([new Date(), data.nombre, data.telefono, data.direccion, data.pedido, data.total, data.metodoPago, data.fecha, data.notas]);
+      return ContentService.createTextOutput(JSON.stringify({status:"ok"})).setMimeType(ContentService.MimeType.JSON);
+    }
+    function doGet(e) {
+      const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      const rows = sheet.getDataRange().getValues();
+      const pedidos = [];
+      for(let i=1; i<rows.length; i++) {
+        pedidos.push({ fecha: rows[i][0], nombre: rows[i][1], telefono: rows[i][2], direccion: rows[i][3], pedido: rows[i][4], total: rows[i][5], metodoPago: rows[i][6], horaRegistro: rows[i][7], notas: rows[i][8] });
+      }
+      return ContentService.createTextOutput(JSON.stringify({pedidos: pedidos})).setMimeType(ContentService.MimeType.JSON);
+    }
+    */
+</script>
+</body>
+</html>

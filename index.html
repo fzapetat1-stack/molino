@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SHEIBIS</title>
+    <title>SHEIBIS · Tienda Premium</title>
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ============================================================
-           RESET & BASE
+           RESET & BASE — Lujo absoluto
            ============================================================ */
         * {
             margin: 0;
@@ -42,7 +42,7 @@
         }
 
         /* ============================================================
-           FONDO DINÁMICO
+           FONDO DINÁMICO PREMIUM
            ============================================================ */
         .bg-canvas {
             position: fixed;
@@ -111,7 +111,7 @@
         ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 12px; opacity: 0.3; }
 
         /* ============================================================
-           SPLASH SCREEN — 3 segundos
+           SPLASH SCREEN — ANIMACIÓN DE ENTRADA (3 segundos)
            ============================================================ */
         #splash {
             position: fixed;
@@ -154,7 +154,6 @@
             justify-content: center;
         }
 
-        /* LOGO ESTÁTICO */
         .splash-img {
             height: 280px;
             width: 280px;
@@ -163,13 +162,13 @@
             border-radius: 50%;
             display: block;
             z-index: 2;
-            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.08)) drop-shadow(0 0 80px rgba(212, 175, 55, 0.03));
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: drop-shadow(0 0 60px rgba(212, 175, 55, 0.08)) drop-shadow(0 0 120px rgba(95, 168, 211, 0.04));
+            animation: splashFloat 3s ease-in-out infinite;
         }
 
-        .splash-img:hover {
-            transform: scale(1.04);
-            filter: drop-shadow(0 0 60px rgba(212, 175, 55, 0.15)) drop-shadow(0 0 120px rgba(212, 175, 55, 0.06));
+        @keyframes splashFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
         }
 
         .splash-loader {
@@ -219,7 +218,6 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* LOGO ESTÁTICO */
         .logo-img-top {
             height: 40px;
             width: 40px;
@@ -389,7 +387,7 @@
         .btn-danger:hover { background: rgba(255, 107, 107, 0.12); }
 
         /* ============================================================
-           HERO — con el logo centrado
+           HERO
            ============================================================ */
         .hero {
             padding: 3.5rem 3rem 2.5rem;
@@ -416,7 +414,6 @@
             100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
 
-        /* LOGO ESTÁTICO */
         .hero-logo {
             height: 180px;
             width: 180px;
@@ -585,31 +582,78 @@
             font-size: 1.45rem;
         }
 
-        .product-card .btn-add {
-            background: var(--gold-gradient);
-            color: #070b12;
-            border: none;
-            padding: 0.75rem 1.2rem;
+        .product-card .product-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 60px;
-            font-weight: 700;
+            padding: 0.15rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
             cursor: pointer;
-            width: 100%;
-            margin-top: 1.2rem;
-            transition: all 0.3s;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
+        }
+
+        .qty-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+
+        .qty-display {
+            min-width: 20px;
+            text-align: center;
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.85rem;
+        }
+
+        .btn-add {
+            background: var(--gold-gradient);
+            color: #070b12;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.08);
         }
 
-        .product-card .btn-add:hover {
+        .btn-add:hover {
             transform: scale(1.02);
-            box-shadow: 0 12px 36px rgba(212, 175, 55, 0.18);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.18);
         }
 
-        .product-card .btn-add i { font-size: 0.8rem; }
+        .btn-add.added {
+            background: #22c55e;
+            color: #fff;
+        }
 
         /* ============================================================
            FOOTER
@@ -649,6 +693,8 @@
             .product-card { padding: 1.2rem 0.8rem; border-radius: 22px; }
             .product-card .product-icon { font-size: 2.6rem; }
             .product-card .product-price { font-size: 1.2rem; }
+            .qty-btn { width: 24px; height: 24px; font-size: 0.7rem; }
+            .btn-add { font-size: 0.65rem; padding: 0.4rem 0.6rem; }
         }
 
         @media (max-width: 480px) {
@@ -656,23 +702,23 @@
             .product-card { padding: 1rem 0.6rem; border-radius: 18px; }
             .product-card .product-icon { font-size: 2.2rem; }
             .product-card .product-name { font-size: 0.85rem; }
-            .product-card .btn-add { font-size: 0.75rem; padding: 0.6rem 0.5rem; }
+            .btn-add { font-size: 0.6rem; padding: 0.3rem 0.5rem; }
             .hero-logo { height: 100px; width: 100px; }
             .splash-img { height: 150px; width: 150px; }
             .splash-loader { width: 40px; height: 40px; }
-            .logo-img-top { height: 30px; width: 30px; }
+            .qty-btn { width: 22px; height: 22px; font-size: 0.6rem; }
+            .qty-display { font-size: 0.75rem; min-width: 16px; }
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================
-    SPLASH SCREEN — 3 segundos
+    SPLASH SCREEN — ANIMACIÓN DE ENTRADA (3 segundos)
     ============================================================ -->
     <div id="splash">
         <div class="splash-content">
             <div class="splash-logo-wrapper">
-                <!-- LOGO ESTÁTICO -->
                 <img src="https://cdn.phototourl.com/free/2026-06-30-894a18ad-2214-4ace-ac1d-e14c8412f777.jpg" alt="SHEIBIS" class="splash-img" loading="lazy">
             </div>
             <div class="splash-loader"></div>
@@ -695,18 +741,16 @@
     <header class="top-bar">
         <div class="logo-area">
             <div class="logo-wrapper">
-                <!-- LOGO ESTÁTICO -->
                 <img src="https://cdn.phototourl.com/free/2026-06-30-894a18ad-2214-4ace-ac1d-e14c8412f777.jpg" alt="SHEIBIS" class="logo-img-top" loading="lazy">
             </div>
         </div>
     </header>
 
     <!-- ============================================================
-    HERO — con el logo centrado
+    HERO
     ============================================================ -->
     <section class="hero">
         <div class="hero-logo-wrapper">
-            <!-- LOGO ESTÁTICO -->
             <img src="https://cdn.phototourl.com/free/2026-06-30-894a18ad-2214-4ace-ac1d-e14c8412f777.jpg" alt="SHEIBIS" class="hero-logo" loading="lazy">
         </div>
     </section>
@@ -717,10 +761,15 @@
     <div class="categories-bar" id="categoryBar">
         <a href="#" class="cat-item active" data-cat="todos"><i class="fas fa-th-large"></i> Todos</a>
         <a href="#" class="cat-item" data-cat="audifonos"><i class="fas fa-headphones"></i> Audífonos</a>
+        <a href="#" class="cat-item" data-cat="relojes"><i class="fas fa-clock"></i> Smartwatches</a>
+        <a href="#" class="cat-item" data-cat="cargadores"><i class="fas fa-bolt"></i> Cargadores</a>
+        <a href="#" class="cat-item" data-cat="powerbanks"><i class="fas fa-battery-full"></i> Power Banks</a>
         <a href="#" class="cat-item" data-cat="bocinas"><i class="fas fa-volume-up"></i> Bocinas</a>
         <a href="#" class="cat-item" data-cat="camaras"><i class="fas fa-camera"></i> Cámaras</a>
-        <a href="#" class="cat-item" data-cat="relojes"><i class="fas fa-clock"></i> Relojes</a>
-        <a href="#" class="cat-item" data-cat="casos"><i class="fas fa-suitcase"></i> Cases</a>
+        <a href="#" class="cat-item" data-cat="cables"><i class="fas fa-plug"></i> Cables</a>
+        <a href="#" class="cat-item" data-cat="fundas"><i class="fas fa-mobile-alt"></i> Fundas</a>
+        <a href="#" class="cat-item" data-cat="soportes"><i class="fas fa-grip"></i> Soportes</a>
+        <a href="#" class="cat-item" data-cat="impresoras"><i class="fas fa-print"></i> Impresoras</a>
     </div>
 
     <!-- ============================================================
@@ -770,34 +819,75 @@
             }, 3000);
 
             // ============================================================
-            //  PRODUCTOS
+            //  PRODUCTOS — TODOS LOS QUE MENCIONASTE
             // ============================================================
             const products = [
-                { id: 1, nombre: "Audífonos Pro X1", precio: 450, icono: "fa-headphones", categoria: "audifonos", desc: "Cancelación de ruido · 40h" },
-                { id: 2, nombre: "Audífonos Ultra Bass", precio: 320, icono: "fa-headphones", categoria: "audifonos", desc: "Bajos profundos · 5.2" },
-                { id: 3, nombre: "Audífonos Studio Pro", precio: 680, icono: "fa-headphones", categoria: "audifonos", desc: "Sonido envolvente · Pro" },
-                { id: 4, nombre: "Audífonos Sports Fit", precio: 250, icono: "fa-headphones", categoria: "audifonos", desc: "Resistentes · deporte" },
-                { id: 5, nombre: "Bocina BoomBox 360", precio: 580, icono: "fa-volume-up", categoria: "bocinas", desc: "Sonido 360° · resistente" },
-                { id: 6, nombre: "Bocina Mini Plus", precio: 180, icono: "fa-volume-up", categoria: "bocinas", desc: "Portátil · 12h" },
-                { id: 7, nombre: "Bocina Party Pro", precio: 890, icono: "fa-volume-up", categoria: "bocinas", desc: "100W · luces · karaoke" },
-                { id: 8, nombre: "Bocina Smart Home", precio: 420, icono: "fa-volume-up", categoria: "bocinas", desc: "Asistente · WiFi" },
-                { id: 9, nombre: "Cámara 4K Action", precio: 1200, icono: "fa-camera", categoria: "camaras", desc: "4K 60fps · estabilización" },
-                { id: 10, nombre: "Cámara Web Pro", precio: 350, icono: "fa-camera", categoria: "camaras", desc: "4K · micrófono dual" },
-                { id: 11, nombre: "Cámara Instantánea", precio: 280, icono: "fa-camera", categoria: "camaras", desc: "Impresión · filtros" },
-                { id: 12, nombre: "Cámara 360°", precio: 1800, icono: "fa-camera", categoria: "camaras", desc: "5.7K · estabilización" },
-                { id: 13, nombre: "SmartWatch Pro", precio: 850, icono: "fa-clock", categoria: "relojes", desc: "GPS · cardíaco · 7 días" },
-                { id: 14, nombre: "SmartWatch Fit", precio: 420, icono: "fa-clock", categoria: "relojes", desc: "Deporte · 5 ATM" },
-                { id: 15, nombre: "SmartWatch Classic", precio: 1200, icono: "fa-clock", categoria: "relojes", desc: "Acero · elegante" },
-                { id: 16, nombre: "SmartWatch Kids", precio: 220, icono: "fa-clock", categoria: "relojes", desc: "GPS · llamadas" },
-                { id: 17, nombre: "Case Premium Aluminio", precio: 180, icono: "fa-suitcase", categoria: "casos", desc: "Cierre magnético" },
-                { id: 18, nombre: "Case Travel Pack", precio: 120, icono: "fa-suitcase", categoria: "casos", desc: "Portátil · cables" },
-                { id: 19, nombre: "Case Waterproof", precio: 250, icono: "fa-suitcase", categoria: "casos", desc: "Resistente al agua" },
-                { id: 20, nombre: "Case Carbon Fiber", precio: 320, icono: "fa-suitcase", categoria: "casos", desc: "Fibra · ultra ligero" },
+                // Audífonos Bluetooth
+                { id: 1, nombre: "Audífonos Pro X1", precio: 450, icono: "fa-headphones", categoria: "audifonos", desc: "Cancelación de ruido · 40h de batería" },
+                { id: 2, nombre: "Audífonos Ultra Bass", precio: 320, icono: "fa-headphones", categoria: "audifonos", desc: "Bajos profundos · Bluetooth 5.2" },
+                { id: 3, nombre: "Audífonos Studio Pro", precio: 680, icono: "fa-headphones", categoria: "audifonos", desc: "Sonido envolvente · Carga rápida" },
+                { id: 4, nombre: "Audífonos Sports Fit", precio: 250, icono: "fa-headphones", categoria: "audifonos", desc: "Resistentes al agua · Diseño deportivo" },
+                { id: 5, nombre: "Audífonos Elite", precio: 550, icono: "fa-headphones", categoria: "audifonos", desc: "Audio de alta fidelidad · 50h de batería" },
+
+                // Smartwatches
+                { id: 6, nombre: "SmartWatch Ultra", precio: 850, icono: "fa-clock", categoria: "relojes", desc: "GPS · Monitoreo cardíaco · 7 días" },
+                { id: 7, nombre: "SmartWatch Fit", precio: 420, icono: "fa-clock", categoria: "relojes", desc: "Deporte · 5 ATM · Notificaciones" },
+                { id: 8, nombre: "SmartWatch Classic", precio: 1200, icono: "fa-clock", categoria: "relojes", desc: "Acero inoxidable · Esfera premium" },
+                { id: 9, nombre: "SmartWatch Kids", precio: 220, icono: "fa-clock", categoria: "relojes", desc: "GPS · Llamadas · Diseño resistente" },
+
+                // Cargadores rápidos
+                { id: 10, nombre: "Cargador Rápido 65W", precio: 180, icono: "fa-bolt", categoria: "cargadores", desc: "USB-C · Carga para laptop y celular" },
+                { id: 11, nombre: "Cargador Inalámbrico", precio: 220, icono: "fa-bolt", categoria: "cargadores", desc: "Qi · Soporte ajustable · Carga rápida" },
+                { id: 12, nombre: "Cargador Dual 40W", precio: 150, icono: "fa-bolt", categoria: "cargadores", desc: "2 puertos · Carga inteligente" },
+
+                // Power Banks
+                { id: 13, nombre: "Power Bank 20000mAh", precio: 350, icono: "fa-battery-full", categoria: "powerbanks", desc: "3 puertos · Pantalla digital" },
+                { id: 14, nombre: "Power Bank Mini", precio: 180, icono: "fa-battery-full", categoria: "powerbanks", desc: "10000mAh · Ultra delgado" },
+                { id: 15, nombre: "Power Bank Solar", precio: 420, icono: "fa-battery-full", categoria: "powerbanks", desc: "Carga solar · 25000mAh" },
+
+                // Bocinas Bluetooth
+                { id: 16, nombre: "Bocina Boom 360", precio: 580, icono: "fa-volume-up", categoria: "bocinas", desc: "Sonido 360° · Resistente al agua" },
+                { id: 17, nombre: "Bocina Party Pro", precio: 890, icono: "fa-volume-up", categoria: "bocinas", desc: "100W · Luces LED · Karaoke" },
+                { id: 18, nombre: "Bocina Mini", precio: 180, icono: "fa-volume-up", categoria: "bocinas", desc: "Portátil · 12h de batería" },
+                { id: 19, nombre: "Bocina Smart Home", precio: 420, icono: "fa-volume-up", categoria: "bocinas", desc: "Asistente de voz · WiFi" },
+
+                // Cámaras Wi-Fi
+                { id: 20, nombre: "Cámara 4K Action", precio: 1200, icono: "fa-camera", categoria: "camaras", desc: "4K 60fps · Estabilización" },
+                { id: 21, nombre: "Cámara Web Pro", precio: 350, icono: "fa-camera", categoria: "camaras", desc: "4K · Micrófono dual" },
+                { id: 22, nombre: "Cámara 360°", precio: 1800, icono: "fa-camera", categoria: "camaras", desc: "5.7K · Estabilización" },
+                { id: 23, nombre: "Cámara Interior", precio: 450, icono: "fa-camera", categoria: "camaras", desc: "1080p · Visión nocturna" },
+
+                // Cables de carga
+                { id: 24, nombre: "Cable USB-C Premium", precio: 80, icono: "fa-plug", categoria: "cables", desc: "Trenzado · 2 metros · Carga rápida" },
+                { id: 25, nombre: "Cable Lightning Pro", precio: 90, icono: "fa-plug", categoria: "cables", desc: "MFi · Trenzado · Apple" },
+                { id: 26, nombre: "Cable 3 en 1", precio: 120, icono: "fa-plug", categoria: "cables", desc: "USB-C · Lightning · Micro USB" },
+
+                // Fundas y protectores
+                { id: 27, nombre: "Funda Transparente", precio: 120, icono: "fa-mobile-alt", categoria: "fundas", desc: "Anti-amarillamiento · Delgada" },
+                { id: 28, nombre: "Funda Anti-shock", precio: 180, icono: "fa-mobile-alt", categoria: "fundas", desc: "Protección militar · Resistente" },
+                { id: 29, nombre: "Protector de Pantalla", precio: 150, icono: "fa-mobile-alt", categoria: "fundas", desc: "Vidrio 9H · Anti-huellas" },
+
+                // Soportes para celular
+                { id: 30, nombre: "Soporte Magnético", precio: 180, icono: "fa-grip", categoria: "soportes", desc: "360° · Base antideslizante" },
+                { id: 31, nombre: "Soporte Ventilación", precio: 120, icono: "fa-grip", categoria: "soportes", desc: "Sujeción segura · Universal" },
+                { id: 32, nombre: "Soporte de Mesa", precio: 220, icono: "fa-grip", categoria: "soportes", desc: "Ajuste de altura · Plegable" },
+
+                // Mini impresoras térmicas
+                { id: 33, nombre: "Mini Impresora Térmica", precio: 680, icono: "fa-print", categoria: "impresoras", desc: "Bluetooth · Sin tinta · App" },
+                { id: 34, nombre: "Impresora Portátil", precio: 450, icono: "fa-print", categoria: "impresoras", desc: "Tamaño bolsillo · Papel incluido" },
+                { id: 35, nombre: "Impresora de Etiquetas", precio: 520, icono: "fa-print", categoria: "impresoras", desc: "Termal · Ideal para negocios" },
             ];
 
+            // ============================================================
+            //  ESTADO
+            // ============================================================
             let cart = [];
+            let quantities = {};
             let currentFilter = 'todos';
 
+            // ============================================================
+            //  DOM REFS
+            // ============================================================
             const grid = document.getElementById('productGrid');
             const cartItemsEl = document.getElementById('cartItems');
             const cartTotalEl = document.getElementById('cartTotal');
@@ -805,19 +895,35 @@
             const cartEl = document.getElementById('cart');
             const categoryLinks = document.querySelectorAll('.cat-item');
 
+            // ============================================================
+            //  RENDER PRODUCTOS
+            // ============================================================
             function renderProducts(filter) {
                 const filtered = filter === 'todos' ? products : products.filter(p => p.categoria === filter);
-                grid.innerHTML = filtered.map(p => `
-                    <div class="product-card" data-id="${p.id}">
-                        <div class="product-icon"><i class="fas ${p.icono}"></i></div>
-                        <div class="product-name">${p.nombre}</div>
-                        <div class="product-category">${p.desc}</div>
-                        <div class="product-price">Q ${p.precio}</div>
-                        <button class="btn-add" onclick="addToCart(${p.id})"><i class="fas fa-plus"></i> Agregar</button>
-                    </div>
-                `).join('');
+                grid.innerHTML = filtered.map(p => {
+                    const qty = quantities[p.id] || 1;
+                    return `
+                        <div class="product-card" data-id="${p.id}">
+                            <div class="product-icon"><i class="fas ${p.icono}"></i></div>
+                            <div class="product-name">${p.nombre}</div>
+                            <div class="product-category">${p.desc}</div>
+                            <div class="product-price">Q ${p.precio}</div>
+                            <div class="product-actions">
+                                <div class="qty-control">
+                                    <button class="qty-btn" onclick="changeQty(${p.id}, -1)"><i class="fas fa-minus"></i></button>
+                                    <span class="qty-display" id="qty-${p.id}">${qty}</span>
+                                    <button class="qty-btn" onclick="changeQty(${p.id}, 1)"><i class="fas fa-plus"></i></button>
+                                </div>
+                                <button class="btn-add" onclick="addToCart(${p.id})"><i class="fas fa-plus"></i> Agregar</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             }
 
+            // ============================================================
+            //  FILTRAR
+            // ============================================================
             function filterProducts(categoria) {
                 currentFilter = categoria;
                 renderProducts(categoria);
@@ -827,23 +933,45 @@
                 });
             }
 
+            // ============================================================
+            //  CANTIDAD
+            // ============================================================
+            window.changeQty = function(id, delta) {
+                if (!quantities[id]) quantities[id] = 1;
+                quantities[id] = Math.max(1, quantities[id] + delta);
+                const display = document.getElementById(`qty-${id}`);
+                if (display) display.textContent = quantities[id];
+            };
+
+            // ============================================================
+            //  CARRITO
+            // ============================================================
             window.addToCart = function(id) {
                 const product = products.find(p => p.id === id);
                 if (!product) return;
+                const qty = quantities[id] || 1;
+
                 const existing = cart.find(p => p.id === id);
-                if (existing) existing.cantidad += 1;
-                else cart.push({ ...product, cantidad: 1 });
+                if (existing) {
+                    existing.cantidad += qty;
+                } else {
+                    cart.push({ ...product, cantidad: qty });
+                }
+
+                quantities[id] = 1;
+                const display = document.getElementById(`qty-${id}`);
+                if (display) display.textContent = 1;
+
                 updateCartUI();
+
                 const btn = document.querySelector(`.product-card[data-id="${id}"] .btn-add`);
                 if (btn) {
                     const orig = btn.innerHTML;
                     btn.innerHTML = '<i class="fas fa-check"></i> Agregado';
-                    btn.style.background = '#22c55e';
-                    btn.style.color = '#fff';
+                    btn.classList.add('added');
                     setTimeout(() => {
                         btn.innerHTML = orig;
-                        btn.style.background = 'var(--gold-gradient)';
-                        btn.style.color = '#070b12';
+                        btn.classList.remove('added');
                     }, 1200);
                 }
             };
@@ -896,6 +1024,9 @@
                 cartCountEl.textContent = count;
             }
 
+            // ============================================================
+            //  EVENTOS CATEGORÍA
+            // ============================================================
             categoryLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -904,6 +1035,9 @@
                 });
             });
 
+            // ============================================================
+            //  CERRAR CARRITO
+            // ============================================================
             document.addEventListener('click', (e) => {
                 const toggle = document.getElementById('cartToggle');
                 if (cartEl.classList.contains('active') && !cartEl.contains(e.target) && !toggle.contains(e.target)) {
@@ -911,13 +1045,15 @@
                 }
             });
 
+            // ============================================================
+            //  INICIO
+            // ============================================================
             renderProducts('todos');
             updateCartUI();
             document.querySelector('.cat-item[data-cat="todos"]')?.classList.add('active');
 
-            console.log('✦ SHEIBIS — solo el logo circular, sin texto de imagen');
+            console.log('✦ SHEIBIS — Tienda con animación de entrada y todos los productos');
         })();
     </script>
 </body>
-</html>
 </html>

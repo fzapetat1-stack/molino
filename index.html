@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SHEIBIS · Tienda Premium</title>
-    <!-- Fonts & Icons -->
+    <title>SHEIBIS · Todo a tu alcance</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* ============================================================
-           RESET & BASE — Lujo absoluto
+           RESET & BASE — FUTURISTA ULTRA PREMIUM
            ============================================================ */
         * {
             margin: 0;
@@ -18,25 +17,25 @@
         }
 
         :root {
-            --primary: #05080e;
-            --secondary: #0a101c;
-            --accent: #5fa8d3;
-            --gold: #d4af37;
-            --gold-light: #f5d78e;
-            --gold-gradient: linear-gradient(145deg, #d4af37, #f5d78e, #d4af37);
-            --text-light: #f0f4fa;
-            --text-muted: #8e9fb1;
+            --primary: #010208;
+            --secondary: #0a0e1a;
+            --gold: #ffd700;
+            --gold-glow: #ffd700;
+            --blue-neon: #00d4ff;
+            --purple-neon: #b44dff;
+            --pink-neon: #ff2d95;
+            --white: #ffffff;
+            --text-muted: #7a8ba8;
             --shadow-premium: 0 30px 80px -20px rgba(0, 0, 0, 0.9);
+            --font-future: 'Orbitron', sans-serif;
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', system-ui, sans-serif;
-            --card-bg: rgba(255, 255, 255, 0.02);
-            --border-glow: rgba(212, 175, 55, 0.08);
         }
 
         body {
             background: var(--primary);
             font-family: var(--font-sans);
-            color: var(--text-light);
+            color: var(--white);
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.5;
@@ -44,76 +43,53 @@
         }
 
         /* ============================================================
-           FONDO DINÁMICO PREMIUM
+           FONDO DINÁMICO — NEÓN GALÁCTICO
            ============================================================ */
         .bg-canvas {
             position: fixed;
             inset: 0;
             z-index: -1;
             pointer-events: none;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(0, 212, 255, 0.06), transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 215, 0, 0.04), transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(180, 77, 255, 0.03), transparent 60%),
+                radial-gradient(ellipse at 0% 50%, rgba(255, 45, 149, 0.02), transparent 40%);
         }
 
         .bg-canvas .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.1;
-            animation: orbFloat 28s infinite alternate ease-in-out;
+            filter: blur(150px);
+            animation: orbFloat 30s infinite alternate ease-in-out;
         }
-
-        .orb-1 {
-            width: 700px;
-            height: 700px;
-            top: -20%;
-            left: -15%;
-            background: radial-gradient(circle, #2b4b6e, transparent 70%);
-        }
-
-        .orb-2 {
-            width: 600px;
-            height: 600px;
-            bottom: -20%;
-            right: -15%;
-            background: radial-gradient(circle, #6f4f2b, transparent 70%);
-            animation-duration: 34s;
-        }
-
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            top: 30%;
-            left: 55%;
-            background: radial-gradient(circle, #3a6a8f, transparent 70%);
-            animation-duration: 22s;
-            opacity: 0.05;
-        }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, -40px) scale(1.1); }
-        }
+        .orb-1 { width: 800px; height: 800px; top: -30%; left: -20%; background: radial-gradient(circle, rgba(0,212,255,0.08), transparent 70%); animation-duration: 35s; }
+        .orb-2 { width: 700px; height: 700px; bottom: -30%; right: -20%; background: radial-gradient(circle, rgba(255,215,0,0.06), transparent 70%); animation-duration: 40s; }
+        .orb-3 { width: 500px; height: 500px; top: 20%; left: 50%; background: radial-gradient(circle, rgba(180,77,255,0.05), transparent 70%); animation-duration: 25s; }
+        .orb-4 { width: 400px; height: 400px; bottom: 10%; left: 10%; background: radial-gradient(circle, rgba(255,45,149,0.04), transparent 70%); animation-duration: 28s; }
+        @keyframes orbFloat { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(80px, -60px) scale(1.2); } }
 
         .particle-grid {
             position: fixed;
             inset: 0;
             z-index: -1;
-            background-image:
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                radial-gradient(circle at 80% 60%, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
-            background-size: 80px 80px, 120px 120px, 60px 60px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0,212,255,0.03) 1px, transparent 1px),
+                radial-gradient(circle at 80% 60%, rgba(255,215,0,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 40% 90%, rgba(180,77,255,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 70% 30%, rgba(255,45,149,0.015) 1px, transparent 1px);
+            background-size: 60px 60px, 80px 80px, 100px 100px, 70px 70px;
             pointer-events: none;
+            animation: particleDrift 60s linear infinite;
         }
+        @keyframes particleDrift { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 30px); } }
 
-        /* ============================================================
-           SCROLLBAR
-           ============================================================ */
-        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 12px; opacity: 0.3; }
+        ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 12px; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
 
         /* ============================================================
-           SPLASH SCREEN — ANIMACIÓN DE ENTRADA (3 segundos)
+           SPLASH — ANIMACIÓN DE ENTRADA ÉPICA
            ============================================================ */
         #splash {
             position: fixed;
@@ -124,846 +100,580 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             pointer-events: none;
         }
-
-        #splash.hidden {
-            opacity: 0;
-            transform: scale(1.05);
-            pointer-events: none;
+        #splash.hidden { opacity: 0; transform: scale(1.08); pointer-events: none; }
+        .splash-content { display: flex; flex-direction: column; align-items: center; justify-content: center; animation: splashEntrance 2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes splashEntrance { 
+            0% { opacity: 0; transform: scale(0.3) rotate(-15deg); } 
+            60% { transform: scale(1.08) rotate(2deg); opacity: 1; } 
+            100% { transform: scale(1) rotate(0deg); opacity: 1; } 
         }
-
-        .splash-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            animation: splashEntrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .splash-img { 
+            height: 300px; 
+            width: 300px; 
+            object-fit: cover; 
+            object-position: center; 
+            border-radius: 50%; 
+            display: block; 
+            box-shadow: 0 0 80px rgba(255,215,0,0.2), 0 0 160px rgba(0,212,255,0.1), 0 20px 60px rgba(0,0,0,0.6);
+            animation: splashFloat 4s ease-in-out infinite, splashPulse 3s ease-in-out infinite;
         }
-
-        @keyframes splashEntrance {
-            0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
-            60% { transform: scale(1.05) rotate(2deg); opacity: 1; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-
-        .splash-img {
-            height: 280px;
-            width: 280px;
-            object-fit: cover;
-            object-position: center;
-            border-radius: 50%;
-            display: block;
-            filter: drop-shadow(0 0 60px rgba(212, 175, 55, 0.08)) drop-shadow(0 0 120px rgba(95, 168, 211, 0.04));
-            animation: splashFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes splashFloat {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-15px) scale(1.02); }
-        }
-
-        .splash-loader {
-            margin-top: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.03);
-            border-top: 2px solid var(--gold);
-            animation: spinLoader 1s linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes spinLoader {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes splashFloat { 0%, 100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-20px) scale(1.03); } }
+        @keyframes splashPulse { 0%, 100% { box-shadow: 0 0 80px rgba(255,215,0,0.2), 0 0 160px rgba(0,212,255,0.1); } 50% { box-shadow: 0 0 120px rgba(255,215,0,0.3), 0 0 240px rgba(0,212,255,0.15); } }
+        .splash-loader { margin-top: 2.5rem; width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.03); border-top: 2px solid var(--gold); border-right: 2px solid var(--blue-neon); animation: spinLoader 0.8s linear infinite; opacity: 0.6; }
+        @keyframes spinLoader { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* ============================================================
-           TOP BAR — ESTILO AMAZON MEJORADO
+           TOP BAR — NEÓN FUTURISTA
            ============================================================ */
         .top-bar {
-            background: rgba(7, 11, 18, 0.92);
-            backdrop-filter: blur(24px) saturate(1.6);
-            -webkit-backdrop-filter: blur(24px) saturate(1.6);
-            padding: 0.6rem 2rem;
+            background: rgba(1, 2, 8, 0.92);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            padding: 0.7rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255,215,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
             flex-wrap: wrap;
             gap: 0.5rem;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.4);
         }
+        .cart-top-btn { 
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(0,212,255,0.15)); 
+            color: var(--white); 
+            border: 1px solid rgba(255,215,0,0.1); 
+            padding: 10px 24px; 
+            border-radius: 60px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            font-size: 0.8rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            transition: 0.4s; 
+            box-shadow: 0 4px 30px rgba(255,215,0,0.05);
+            font-family: var(--font-future);
+            letter-spacing: 1px;
+        }
+        .cart-top-btn:hover { 
+            transform: scale(1.05) translateY(-2px); 
+            border-color: var(--gold); 
+            box-shadow: 0 8px 50px rgba(255,215,0,0.15); 
+            background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(0,212,255,0.25));
+        }
+        .cart-top-btn i { color: var(--gold); }
 
-        .logo-area {
+        /* ============================================================
+           HERO — LOGO GIGANTE CENTRADO
+           ============================================================ */
+        .hero-section {
+            min-height: 85vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
         }
 
-        .logo-img-top {
-            height: 38px;
-            width: 38px;
+        .hero-logo-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: heroEntrance 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes heroEntrance {
+            0% { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+            60% { transform: scale(1.02) rotate(1deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .hero-logo-wrapper {
+            position: relative;
+            display: inline-block;
+            animation: logoHover 6s ease-in-out infinite;
+        }
+
+        @keyframes logoHover {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero-logo-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -80px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0%,
+                rgba(255,215,0,0.15) 10%,
+                transparent 20%,
+                rgba(0,212,255,0.15) 30%,
+                transparent 40%,
+                rgba(180,77,255,0.15) 50%,
+                transparent 60%,
+                rgba(255,45,149,0.15) 70%,
+                transparent 80%,
+                rgba(255,215,0,0.15) 90%,
+                transparent 100%
+            );
+            animation: spinGlow 8s linear infinite;
+            filter: blur(30px);
+            z-index: -1;
+        }
+
+        @keyframes spinGlow {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .hero-logo-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -30px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,215,0,0.05);
+            animation: pulseRing 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulseRing {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+        }
+
+        .hero-logo {
+            height: 320px;
+            width: 320px;
             object-fit: cover;
             object-position: center;
             border-radius: 50%;
             display: block;
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.08));
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 
+                0 0 60px rgba(255,215,0,0.1),
+                0 0 120px rgba(0,212,255,0.05),
+                0 30px 80px rgba(0,0,0,0.5);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
         }
 
-        .logo-img-top:hover {
-            transform: scale(1.06) rotate(-2deg);
-            filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.15));
+        .hero-logo:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 
+                0 0 100px rgba(255,215,0,0.2),
+                0 0 200px rgba(0,212,255,0.1),
+                0 40px 100px rgba(0,0,0,0.6);
         }
 
-        .brand-name {
+        .hero-title {
+            margin-top: 2rem;
             font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            background: var(--gold-gradient);
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, #ffd700, #ff6b6b, #00d4ff, #b44dff, #ffd700);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: 0.3s;
+            animation: gradientTitle 5s ease-in-out infinite;
+            text-shadow: none;
+            filter: drop-shadow(0 0 60px rgba(255,215,0,0.05));
         }
 
-        .brand-name:hover {
-            transform: scale(1.02);
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.1));
-        }
-
-        .search-bar {
-            flex: 1;
-            max-width: 550px;
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-        }
-
-        .search-bar:focus-within {
-            border-color: var(--gold);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.06), inset 0 0 20px rgba(212, 175, 55, 0.02);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .search-bar input {
-            background: transparent;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            color: #fff;
-            font-size: 0.9rem;
-            flex: 1;
-            outline: none;
-            font-family: var(--font-sans);
-        }
-
-        .search-bar input::placeholder {
-            color: var(--text-muted);
-            opacity: 0.4;
-            font-weight: 300;
-        }
-
-        .search-bar button {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            padding: 0.7rem 1.5rem;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 1rem;
-        }
-
-        .search-bar button:hover {
-            color: var(--gold);
-            transform: scale(1.05);
-        }
-
-        .cart-top-btn {
-            background: rgba(34, 197, 94, 0.85);
-            backdrop-filter: blur(12px);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 10px 22px;
-            border-radius: 60px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            white-space: nowrap;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.1);
-        }
-
-        .cart-top-btn:hover {
-            transform: scale(1.04) translateY(-2px);
-            background: rgba(34, 197, 94, 0.95);
-            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.2);
-        }
-
-        .cart-top-btn i {
-            font-size: 1rem;
-        }
-
-        /* ============================================================
-           CATEGORÍAS — scroll horizontal mejorado
-           ============================================================ */
-        .categories-bar {
-            display: flex;
-            gap: 0.5rem 1.8rem;
-            padding: 0.7rem 2rem;
-            background: rgba(255, 255, 255, 0.01);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            overflow-x: auto;
-            flex-wrap: nowrap;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-            position: sticky;
-            top: 62px;
-            z-index: 999;
-            backdrop-filter: blur(10px);
-        }
-
-        .categories-bar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .categories-bar .cat-item {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 0.4rem 0.2rem;
-            border-bottom: 2px solid transparent;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-            position: relative;
-        }
-
-        .categories-bar .cat-item i {
-            color: var(--accent);
-            font-size: 0.8rem;
-            opacity: 0.4;
-            transition: 0.3s;
-        }
-
-        .categories-bar .cat-item:hover {
-            color: #ffffff;
-            border-bottom-color: var(--accent);
-            transform: translateY(-1px);
-        }
-
-        .categories-bar .cat-item:hover i { opacity: 0.8; }
-
-        .categories-bar .cat-item.active {
-            color: #ffffff;
-            border-bottom-color: var(--gold);
-        }
-
-        .categories-bar .cat-item.active i {
-            opacity: 1;
-            color: var(--gold);
-        }
-
-        .categories-bar .cat-item::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold-gradient);
-            transition: 0.4s;
-        }
-
-        .categories-bar .cat-item:hover::after {
-            width: 100%;
-        }
-
-        /* ============================================================
-           HERO BANNER — estilo Amazon mejorado
-           ============================================================ */
-        .hero-banner {
-            padding: 2rem 2rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.01);
-            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.02), transparent 70%);
-        }
-
-        .hero-banner h1 {
-            font-family: var(--font-serif);
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shimmerText 4s ease-in-out infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes shimmerText {
+        @keyframes gradientTitle {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
 
-        .hero-banner p {
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
             color: var(--text-muted);
+            opacity: 0.5;
+            margin-top: 0.5rem;
+            letter-spacing: 6px;
+            font-style: italic;
+            animation: subtitlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes subtitlePulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; text-shadow: 0 0 40px rgba(255,215,0,0.05); }
+        }
+
+        .hero-slogan {
+            margin-top: 0.5rem;
+            font-family: var(--font-future);
             font-size: 1rem;
-            opacity: 0.4;
-            margin-top: 0.3rem;
-            letter-spacing: 3px;
             font-weight: 300;
+            color: var(--text-muted);
+            opacity: 0.2;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-scroll-indicator {
+            margin-top: 3rem;
+            animation: bounceArrow 2s ease-in-out infinite;
+            color: var(--text-muted);
+            opacity: 0.2;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @keyframes bounceArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(15px); }
+        }
+
+        .hero-scroll-indicator:hover {
+            opacity: 0.6;
+            color: var(--gold);
         }
 
         /* ============================================================
-           PRODUCTOS — scroll horizontal estilo Amazon mejorado
+           CATÁLOGOS — 3D GLASS MORPH
            ============================================================ */
-        .product-section {
-            padding: 1.5rem 2rem 2rem;
-        }
-
-        .product-section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.2rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .product-section-title {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #fff;
-            letter-spacing: 1px;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .product-section-title span {
-            background: var(--gold-gradient);
+        .catalog-section { padding: 3.5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .catalog-title { 
+            font-family: var(--font-future); 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            text-align: center; 
+            margin-bottom: 0.3rem; 
+            background: linear-gradient(135deg, #ffd700, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: 6px;
         }
-
-        .product-section-title i {
-            color: var(--gold);
-            opacity: 0.4;
-            font-size: 1.4rem;
-        }
-
-        .view-all {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-decoration: none;
-            opacity: 0.4;
-            transition: 0.3s;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .view-all:hover {
-            opacity: 0.8;
-            color: var(--gold);
-        }
-
-        .product-scroll {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            padding: 0.5rem 0.2rem 1.5rem;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scroll-behavior: smooth;
-        }
-
-        .product-scroll::-webkit-scrollbar {
-            height: 4px;
-        }
-
-        .product-scroll::-webkit-scrollbar-track {
+        .catalog-subtitle { text-align: center; color: var(--text-muted); opacity: 0.3; margin-bottom: 2.5rem; font-size: 0.8rem; letter-spacing: 4px; font-weight: 300; font-family: var(--font-future); }
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+        .catalog-card {
             background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-        }
-
-        .product-scroll::-webkit-scrollbar-thumb {
-            background: var(--gold);
-            border-radius: 10px;
-            opacity: 0.3;
-        }
-
-        .product-card {
-            min-width: 210px;
-            max-width: 230px;
-            flex-shrink: 0;
-            background: var(--card-bg);
-            backdrop-filter: blur(2px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 1.4rem 1.2rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            padding: 2rem 1rem;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            scroll-snap-align: start;
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
         }
-
-        .product-card::before {
+        .catalog-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 1px;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 50%);
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,212,255,0.1), rgba(180,77,255,0.1));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             pointer-events: none;
         }
-
-        .product-card::after {
+        .catalog-card::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gold-gradient);
-            opacity: 0;
-            transition: 0.5s;
-            border-radius: 20px 20px 0 0;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,215,0,0.02), transparent, rgba(0,212,255,0.02), transparent);
+            animation: rotateGlow 8s linear infinite;
+            pointer-events: none;
         }
+        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .catalog-card:hover { transform: translateY(-12px) scale(1.02); border-color: rgba(255,215,0,0.2); box-shadow: 0 30px 60px -20px rgba(255,215,0,0.05), 0 0 60px rgba(255,215,0,0.02); }
+        .catalog-card .catalog-image { width: 100%; height: 140px; object-fit: contain; border-radius: 12px; margin-bottom: 0.8rem; transition: 0.6s; filter: drop-shadow(0 4px 30px rgba(0,0,0,0.3)); animation: imageFloat 4s ease-in-out infinite; }
+        @keyframes imageFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+        .catalog-card:hover .catalog-image { transform: scale(1.05) translateY(-4px); }
+        .catalog-card .catalog-icon { font-size: 3.5rem; color: var(--gold); opacity: 0.3; transition: 0.6s; display: block; margin-bottom: 0.5rem; }
+        .catalog-card:hover .catalog-icon { opacity: 1; transform: scale(1.1) rotate(-5deg); text-shadow: 0 0 40px rgba(255,215,0,0.2); }
+        .catalog-card .catalog-name { font-weight: 700; font-size: 1.1rem; color: var(--white); font-family: var(--font-future); letter-spacing: 1px; }
+        .catalog-card .catalog-count { color: var(--text-muted); font-size: 0.7rem; opacity: 0.3; margin-top: 0.2rem; font-family: var(--font-future); }
 
-        .product-card:hover::after { opacity: 1; }
+        /* ============================================================
+           PRODUCTOS — HOLOGRÁFICOS
+           ============================================================ */
+        .product-detail-section { padding: 2rem; max-width: 1200px; margin: 0 auto; display: none; }
+        .product-detail-section.active { display: block; animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
 
-        .product-card:hover {
-            border-color: rgba(255, 255, 255, 0.06);
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.02);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .product-card .product-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 0.6rem;
-            transition: 0.5s;
-            opacity: 0.5;
-            display: block;
-            line-height: 1;
-        }
-
-        .product-card:hover .product-icon {
-            opacity: 0.9;
-            transform: scale(1.08) translateY(-3px) rotate(-3deg);
-        }
-
-        .product-card .product-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--gold);
-            font-size: 0.55rem;
-            font-weight: 700;
-            padding: 0.2rem 0.6rem;
-            border-radius: 40px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-card .product-name {
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.3rem;
-            color: #f0f4fa;
-            line-height: 1.2;
-            min-height: 2.4rem;
-        }
-
-        .product-card .product-desc {
+        .back-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             color: var(--text-muted);
-            font-size: 0.7rem;
-            opacity: 0.5;
-            margin-bottom: 0.6rem;
-            line-height: 1.2;
-            min-height: 2.2rem;
-        }
-
-        .product-card .product-price {
-            color: var(--gold);
-            font-weight: 800;
-            font-size: 1.3rem;
-            margin-bottom: 0.7rem;
-            letter-spacing: -0.02em;
-        }
-
-        .product-card .product-price small {
-            font-size: 0.6rem;
-            font-weight: 400;
-            opacity: 0.4;
-            text-decoration: line-through;
-            margin-left: 0.3rem;
-            color: var(--text-muted);
-        }
-
-        .product-card .product-actions {
-            display: flex;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.4s;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            font-family: var(--font-future);
+            letter-spacing: 1px;
+        }
+        .back-btn:hover { border-color: var(--gold); color: var(--white); background: rgba(255,215,0,0.05); box-shadow: 0 0 40px rgba(255,215,0,0.05); }
+
+        .detail-title { 
+            font-family: var(--font-future); 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 1.5rem; 
+            background: linear-gradient(135deg, #ffd700, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
         }
 
-        .qty-control {
+        .product-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+        .product-detail-item {
+            display: flex;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            min-height: 180px;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .product-detail-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,215,0,0.05), rgba(0,212,255,0.05));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .product-detail-item:hover { border-color: rgba(255,215,0,0.1); transform: translateY(-6px) scale(1.005); box-shadow: 0 20px 60px -20px rgba(255,215,0,0.03); }
+
+        .product-detail-image {
+            flex: 0 0 200px;
             display: flex;
             align-items: center;
-            gap: 0.15rem;
+            justify-content: center;
+            background: rgba(255,215,0,0.02);
+            padding: 0.5rem;
+            transition: 0.6s;
+            overflow: hidden;
+            position: relative;
+        }
+        .product-detail-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.02), transparent);
+            animation: scanLine 3s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes scanLine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+        .product-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: 0.6s;
+            max-height: 180px;
+            filter: drop-shadow(0 4px 30px rgba(0,0,0,0.3));
+            animation: hologramFloat 5s ease-in-out infinite;
+        }
+        @keyframes hologramFloat { 0%, 100% { transform: translateY(0px) rotate(0deg); } 25% { transform: translateY(-4px) rotate(-1deg); } 75% { transform: translateY(4px) rotate(1deg); } }
+
+        .product-detail-item:hover .product-detail-image img { transform: scale(1.08) rotate(-2deg); }
+        .product-detail-image .icon-placeholder { font-size: 5rem; color: var(--gold); opacity: 0.15; }
+
+        .product-detail-info {
+            flex: 1;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .product-detail-name { font-weight: 700; font-size: 1.2rem; color: var(--white); margin-bottom: 0.3rem; font-family: var(--font-future); letter-spacing: 1px; }
+        .product-detail-desc { color: var(--text-muted); font-size: 0.85rem; opacity: 0.5; margin-bottom: 0.5rem; }
+        .product-detail-price { color: var(--gold); font-weight: 800; font-size: 1.4rem; margin-bottom: 0.6rem; text-shadow: 0 0 40px rgba(255,215,0,0.05); }
+
+        .product-detail-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .qty-control-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 60px;
-            padding: 0.1rem;
+            padding: 0.15rem;
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
-
-        .qty-btn {
+        .qty-btn-detail {
             background: none;
             border: none;
             color: var(--text-muted);
-            width: 26px;
-            height: 26px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 0.7rem;
-            transition: all 0.2s;
+            font-size: 0.85rem;
+            transition: 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        .qty-btn-detail:hover { background: rgba(255,215,0,0.05); color: var(--white); box-shadow: 0 0 30px rgba(255,215,0,0.05); }
+        .qty-display-detail { min-width: 28px; text-align: center; font-weight: 600; color: var(--white); font-size: 1rem; font-family: var(--font-future); }
 
-        .qty-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            transform: scale(1.05);
-        }
-
-        .qty-display {
-            min-width: 20px;
-            text-align: center;
-            font-weight: 600;
-            color: #fff;
-            font-size: 0.85rem;
-        }
-
-        .btn-add {
-            background: var(--gold-gradient);
-            color: #070b12;
-            border: none;
-            padding: 0.5rem 0.8rem;
+        .btn-add-detail {
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(0,212,255,0.15));
+            color: var(--white);
+            border: 1px solid rgba(255,215,0,0.1);
+            padding: 0.6rem 1.8rem;
             border-radius: 60px;
             font-weight: 700;
             cursor: pointer;
-            flex: 1;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            font-size: 0.7rem;
+            transition: 0.4s;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.08);
-            min-height: 34px;
+            gap: 0.6rem;
+            font-family: var(--font-future);
+            letter-spacing: 1px;
         }
-
-        .btn-add:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
-        }
-
-        .btn-add:active {
-            transform: scale(0.95);
-        }
-
-        .btn-add.added {
-            background: #22c55e;
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.2);
-        }
+        .btn-add-detail:hover { transform: scale(1.03); border-color: var(--gold); box-shadow: 0 8px 40px rgba(255,215,0,0.1); background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(0,212,255,0.25)); }
+        .btn-add-detail.added { background: linear-gradient(135deg, #22c55e, #00d4ff); border-color: #22c55e; color: #fff; box-shadow: 0 8px 40px rgba(34,197,94,0.15); }
 
         /* ============================================================
-           CARRITO DESPLEGABLE — mejorado
+           CARRITO — NEÓN
            ============================================================ */
         #cart {
             position: fixed;
             right: 20px;
             top: 80px;
-            width: 380px;
+            width: 400px;
             max-height: 78vh;
-            background: rgba(10, 16, 26, 0.97);
-            backdrop-filter: blur(32px) saturate(1.8);
-            -webkit-backdrop-filter: blur(32px) saturate(1.8);
-            padding: 24px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-premium), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            background: rgba(1, 2, 8, 0.98);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            padding: 28px;
+            border-radius: 28px;
+            box-shadow: 0 30px 80px -20px rgba(0,0,0,0.9), 0 0 60px rgba(255,215,0,0.02);
             display: none;
             z-index: 1200;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255,215,0,0.05);
             overflow-y: auto;
         }
-
-        #cart.active {
-            display: block;
-            animation: cartSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes cartSlide {
-            0% { opacity: 0; transform: translateY(12px) scale(0.96); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        #cart h3 {
-            margin: 0 0 16px 0;
-            color: #fff;
-            font-weight: 600;
-            font-size: 1.15rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #cart h3 i { color: var(--gold); }
-
-        #cart .cart-empty {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 1.5rem 0;
-            opacity: 0.4;
-        }
-
-        #cart .cart-empty i {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.5rem;
-            opacity: 0.3;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .cart-item .item-name {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #d6e2f0;
-            flex: 1;
-        }
-
-        .cart-item .item-price {
-            font-weight: 700;
-            color: var(--gold);
-            margin-right: 8px;
-            font-size: 0.85rem;
-        }
-
-        .cart-item .item-remove {
-            background: none;
-            border: none;
-            color: #7f8fa3;
-            cursor: pointer;
-            font-size: 0.8rem;
-            padding: 0 4px;
-            transition: 0.2s;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cart-item .item-remove:hover {
-            color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.05);
-        }
-
-        .cart-total {
-            font-weight: 800;
-            text-align: right;
-            margin-top: 16px;
-            font-size: 1.3rem;
-            color: var(--gold);
-            letter-spacing: -0.02em;
-        }
-
-        .cart-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 16px;
-            justify-content: flex-end;
-        }
-
-        .btn {
-            border: none;
-            padding: 10px 22px;
-            border-radius: 60px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.8rem;
-            letter-spacing: 0.3px;
-        }
-
-        .btn-primary {
-            background: var(--gold-gradient);
-            color: #070b12;
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
-        }
-
-        .btn-danger {
-            background: rgba(255, 107, 107, 0.06);
-            color: #ff6b6b;
-            border: 1px solid rgba(255, 107, 107, 0.06);
-        }
-
-        .btn-danger:hover {
-            background: rgba(255, 107, 107, 0.12);
-            transform: scale(1.02);
-        }
+        #cart.active { display: block; animation: cartSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes cartSlide { 0% { opacity: 0; transform: translateY(20px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        #cart h3 { margin: 0 0 18px 0; color: var(--white); font-weight: 600; font-size: 1.2rem; display: flex; align-items: center; gap: 12px; font-family: var(--font-future); letter-spacing: 2px; }
+        #cart h3 i { color: var(--gold); text-shadow: 0 0 30px rgba(255,215,0,0.1); }
+        .cart-empty { text-align: center; color: var(--text-muted); padding: 2rem 0; opacity: 0.3; }
+        .cart-empty i { font-size: 3rem; display: block; margin-bottom: 0.8rem; opacity: 0.15; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.02); }
+        .cart-item .item-name { font-size: 0.85rem; font-weight: 500; color: var(--white); flex: 1; font-family: var(--font-future); letter-spacing: 0.5px; }
+        .cart-item .item-price { font-weight: 700; color: var(--gold); margin-right: 10px; font-size: 0.85rem; }
+        .cart-item .item-remove { background: none; border: none; color: #444; cursor: pointer; font-size: 0.8rem; padding: 0 4px; transition: 0.3s; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .cart-item .item-remove:hover { color: #ff6b6b; background: rgba(255,107,107,0.05); box-shadow: 0 0 30px rgba(255,107,107,0.05); }
+        .cart-total { font-weight: 800; text-align: right; margin-top: 18px; font-size: 1.4rem; color: var(--gold); font-family: var(--font-future); text-shadow: 0 0 40px rgba(255,215,0,0.05); }
+        .cart-actions { display: flex; gap: 12px; margin-top: 18px; justify-content: flex-end; }
+        .btn { border: none; padding: 10px 24px; border-radius: 60px; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.8rem; font-family: var(--font-future); letter-spacing: 1px; }
+        .btn-primary { background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(0,212,255,0.2)); color: var(--white); border: 1px solid rgba(255,215,0,0.05); }
+        .btn-primary:hover { transform: scale(1.02); border-color: var(--gold); box-shadow: 0 8px 40px rgba(255,215,0,0.05); }
+        .btn-danger { background: rgba(255,107,107,0.05); color: #ff6b6b; border: 1px solid rgba(255,107,107,0.05); }
+        .btn-danger:hover { background: rgba(255,107,107,0.1); }
 
         /* ============================================================
-           FOOTER — mejorado
+           FOOTER
            ============================================================ */
-        .footer {
-            padding: 2.5rem 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.015);
-            text-align: center;
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .footer p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            opacity: 0.2;
-            font-weight: 300;
-        }
-
-        .footer p i {
-            color: var(--gold);
-            opacity: 0.3;
-            margin: 0 0.3rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            text-decoration: none;
-            opacity: 0.2;
-            transition: 0.3s;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-links a:hover {
-            opacity: 0.6;
-            color: var(--gold);
-        }
+        .footer { padding: 3rem 3rem; border-top: 1px solid rgba(255, 255, 255, 0.02); text-align: center; background: var(--primary); }
+        .footer p { color: var(--text-muted); font-size: 0.8rem; opacity: 0.15; font-family: var(--font-future); letter-spacing: 2px; }
+        .footer p i { color: var(--gold); opacity: 0.2; margin: 0 0.3rem; }
 
         /* ============================================================
-           RESPONSIVE — mejorado
+           RESPONSIVE
            ============================================================ */
         @media (max-width: 820px) {
-            .top-bar { padding: 0.5rem 1.2rem; flex-wrap: wrap; justify-content: center; }
-            .search-bar { max-width: 100%; order: 3; flex-basis: 100%; }
-            .brand-name { font-size: 1.2rem; }
-            .logo-img-top { height: 32px; width: 32px; }
-            .cart-top-btn { padding: 8px 16px; font-size: 0.7rem; }
+            .top-bar { padding: 0.5rem 1.2rem; justify-content: flex-end; }
+            .hero-logo { height: 220px; width: 220px; }
+            .hero-title { font-size: 3.5rem; letter-spacing: 4px; }
+            .hero-subtitle { font-size: 1.3rem; letter-spacing: 4px; }
+            .hero-logo-wrapper::before { inset: -50px; }
+            .cart-top-btn { padding: 8px 16px; font-size: 0.65rem; }
             #cart { width: 92vw; right: 4vw; top: 76px; padding: 18px; }
-            .categories-bar { padding: 0.5rem 1rem; gap: 0.3rem 1rem; top: 58px; }
-            .categories-bar .cat-item { font-size: 0.6rem; }
-            .hero-banner { padding: 1.5rem 1.2rem 0.8rem; }
-            .hero-banner h1 { font-size: 2.2rem; }
-            .product-section { padding: 1rem; }
-            .product-section-title { font-size: 1.3rem; }
-            .product-card { min-width: 170px; padding: 1rem 0.8rem; }
-            .product-card .product-icon { font-size: 2.4rem; }
-            .product-card .product-name { font-size: 0.8rem; min-height: 2rem; }
-            .product-card .product-price { font-size: 1.1rem; }
+            .catalog-section { padding: 2rem 1rem; }
+            .catalog-title { font-size: 2rem; }
+            .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+            .catalog-card .catalog-image { height: 100px; }
+            .product-detail-section { padding: 1rem; }
+            .product-detail-image { flex: 0 0 120px; }
+            .product-detail-image img { max-height: 120px; }
+            .product-detail-info { padding: 1rem; }
             .splash-img { height: 200px; width: 200px; }
-            .qty-btn { width: 22px; height: 22px; font-size: 0.6rem; }
-            .qty-display { font-size: 0.75rem; min-width: 16px; }
-            .btn-add { font-size: 0.6rem; padding: 0.4rem 0.6rem; min-height: 28px; }
-            .footer { padding: 1.5rem 1.2rem; }
-            .footer-links { gap: 1rem; }
+            .detail-title { font-size: 1.8rem; }
+            .hero-scroll-indicator { font-size: 1.2rem; }
         }
-
         @media (max-width: 480px) {
-            .product-card { min-width: 150px; padding: 0.8rem 0.6rem; }
-            .product-card .product-icon { font-size: 2rem; }
-            .product-card .product-name { font-size: 0.7rem; min-height: 1.8rem; }
-            .product-card .product-desc { font-size: 0.6rem; min-height: 1.6rem; }
-            .product-card .product-price { font-size: 0.95rem; }
-            .product-card .product-badge { font-size: 0.45rem; padding: 0.1rem 0.4rem; top: 6px; right: 6px; }
-            .hero-banner h1 { font-size: 1.6rem; }
-            .hero-banner p { font-size: 0.8rem; }
+            .hero-logo { height: 160px; width: 160px; }
+            .hero-title { font-size: 2.5rem; letter-spacing: 3px; }
+            .hero-subtitle { font-size: 1rem; letter-spacing: 3px; }
+            .hero-slogan { font-size: 0.7rem; letter-spacing: 5px; }
+            .hero-logo-wrapper::before { inset: -35px; }
+            .hero-section { min-height: 70vh; padding: 1rem; }
+            .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.8rem; }
+            .catalog-card { padding: 1.2rem 0.6rem; min-height: 170px; }
+            .catalog-card .catalog-image { height: 80px; }
+            .catalog-card .catalog-icon { font-size: 2.5rem; }
+            .catalog-card .catalog-name { font-size: 0.8rem; }
+            .product-detail-item { flex-direction: column; }
+            .product-detail-image { flex: 0 0 100px; }
+            .product-detail-image img { max-height: 100px; }
+            .product-detail-name { font-size: 1rem; }
+            .product-detail-price { font-size: 1.1rem; }
             .splash-img { height: 150px; width: 150px; }
             .splash-loader { width: 40px; height: 40px; }
-            .product-section-title { font-size: 1rem; }
-            .brand-name { font-size: 1rem; letter-spacing: 1px; }
-            .logo-img-top { height: 28px; width: 28px; }
-            .search-bar input { font-size: 0.8rem; padding: 0.5rem 1rem; }
-            .search-bar button { padding: 0.5rem 1rem; font-size: 0.8rem; }
-            .categories-bar { padding: 0.4rem 0.8rem; gap: 0.2rem 0.8rem; }
-            .categories-bar .cat-item { font-size: 0.55rem; }
-            .qty-btn { width: 20px; height: 20px; font-size: 0.55rem; }
-            .qty-display { font-size: 0.7rem; min-width: 14px; }
-            .btn-add { font-size: 0.55rem; padding: 0.3rem 0.5rem; min-height: 24px; }
+            .catalog-title { font-size: 1.6rem; }
+            .detail-title { font-size: 1.3rem; }
+            .top-bar { padding: 0.4rem 0.8rem; }
+            .cart-top-btn { padding: 6px 12px; font-size: 0.55rem; gap: 5px; }
         }
     </style>
 </head>
 <body>
 
     <!-- ============================================================
-    SPLASH SCREEN — ANIMACIÓN DE ENTRADA (3 segundos)
+    SPLASH — ENTRADA CÓSMICA
     ============================================================ -->
     <div id="splash">
         <div class="splash-content">
@@ -973,88 +683,70 @@
     </div>
 
     <!-- ============================================================
-    FONDO PREMIUM
+    FONDO DINÁMICO
     ============================================================ -->
     <div class="bg-canvas">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
         <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
     </div>
     <div class="particle-grid"></div>
 
     <!-- ============================================================
-    TOP BAR — ESTILO AMAZON MEJORADO
+    TOP BAR — NEÓN
     ============================================================ -->
     <header class="top-bar">
-        <a href="#" class="logo-area">
-            <img src="https://cdn.phototourl.com/free/2026-06-30-894a18ad-2214-4ace-ac1d-e14c8412f777.jpg" alt="SHEIBIS" class="logo-img-top" loading="lazy">
-            <span class="brand-name">SHEIBIS</span>
-        </a>
-
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar productos..." id="searchInput">
-            <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
-        </div>
-
         <button class="cart-top-btn" onclick="toggleCart()">
             <i class="fas fa-shopping-bag"></i> <span id="cartCount">0</span>
         </button>
     </header>
 
     <!-- ============================================================
-    CATEGORÍAS — scroll horizontal
+    HERO — LOGO GIGANTE CENTRADO
     ============================================================ -->
-    <div class="categories-bar" id="categoryBar">
-        <a href="#" class="cat-item active" data-cat="todos"><i class="fas fa-th-large"></i> Todos</a>
-        <a href="#" class="cat-item" data-cat="audifonos"><i class="fas fa-headphones"></i> Audífonos</a>
-        <a href="#" class="cat-item" data-cat="relojes"><i class="fas fa-clock"></i> Smartwatches</a>
-        <a href="#" class="cat-item" data-cat="cargadores"><i class="fas fa-bolt"></i> Cargadores</a>
-        <a href="#" class="cat-item" data-cat="powerbanks"><i class="fas fa-battery-full"></i> Power Banks</a>
-        <a href="#" class="cat-item" data-cat="bocinas"><i class="fas fa-volume-up"></i> Bocinas</a>
-        <a href="#" class="cat-item" data-cat="camaras"><i class="fas fa-camera"></i> Cámaras</a>
-        <a href="#" class="cat-item" data-cat="cables"><i class="fas fa-plug"></i> Cables</a>
-        <a href="#" class="cat-item" data-cat="fundas"><i class="fas fa-mobile-alt"></i> Fundas</a>
-        <a href="#" class="cat-item" data-cat="soportes"><i class="fas fa-grip"></i> Soportes</a>
-        <a href="#" class="cat-item" data-cat="impresoras"><i class="fas fa-print"></i> Impresoras</a>
-    </div>
-
-    <!-- ============================================================
-    HERO BANNER
-    ============================================================ -->
-    <div class="hero-banner">
-        <h1>Innovación Tecnológica</h1>
-        <p>Los mejores dispositivos y accesorios al alcance de tu mano</p>
-    </div>
-
-    <!-- ============================================================
-    PRODUCTOS — scroll horizontal estilo Amazon mejorado
-    ============================================================ -->
-    <div class="product-section">
-        <div class="product-section-header">
-            <h2 class="product-section-title">
-                <i class="fas fa-star"></i> Productos <span>Destacados</span>
-            </h2>
-            <a href="#" class="view-all">Ver todos →</a>
+    <section class="hero-section" id="heroSection">
+        <div class="hero-logo-container">
+            <div class="hero-logo-wrapper">
+                <img src="https://cdn.phototourl.com/free/2026-06-30-894a18ad-2214-4ace-ac1d-e14c8412f777.jpg" alt="SHEIBIS" class="hero-logo" loading="lazy">
+            </div>
+            <h1 class="hero-title">SHEIBIS</h1>
+            <p class="hero-subtitle">"Todo lo que sueñas, a tu alcance"</p>
+            <p class="hero-slogan">✦ Innovación · Calidad · Confianza ✦</p>
+            <div class="hero-scroll-indicator" onclick="scrollToCatalogs()">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
-        <div class="product-scroll" id="productScroll"></div>
-    </div>
+    </section>
 
     <!-- ============================================================
-    FOOTER — mejorado
+    CATÁLOGOS — 3D GLASS
+    ============================================================ -->
+    <section class="catalog-section" id="catalogSection">
+        <h2 class="catalog-title">✦ EXPLORA NUESTROS CATÁLOGOS ✦</h2>
+        <p class="catalog-subtitle">Selecciona una categoría para descubrir productos increíbles</p>
+        <div class="catalog-grid" id="catalogGrid"></div>
+    </section>
+
+    <!-- ============================================================
+    PRODUCTOS — HOLOGRÁFICOS
+    ============================================================ -->
+    <section class="product-detail-section" id="productDetailSection">
+        <button class="back-btn" onclick="goHome()"><i class="fas fa-arrow-left"></i> Volver al inicio</button>
+        <h2 class="detail-title" id="detailTitle">Audífonos</h2>
+        <div class="product-list" id="productList"></div>
+    </section>
+
+    <!-- ============================================================
+    FOOTER
     ============================================================ -->
     <footer class="footer">
-        <div class="footer-links">
-            <a href="#">Sobre nosotros</a>
-            <a href="#">Contacto</a>
-            <a href="#">Política de privacidad</a>
-            <a href="#">Términos y condiciones</a>
-        </div>
-        <p><i class="fas fa-heart"></i> Hecho con precisión para amantes de la tecnología</p>
-        <p style="margin-top:0.5rem; font-size:0.7rem; opacity:0.15;">© 2026 SHEIBIS · Todos los derechos reservados</p>
+        <p><i class="fas fa-heart"></i> SHEIBIS — Todo a tu alcance</p>
+        <p style="margin-top:0.5rem; font-size:0.6rem; opacity:0.08;">© 2026 · Todos los derechos reservados</p>
     </footer>
 
     <!-- ============================================================
-    CARRITO DESPLEGABLE — mejorado
+    CARRITO — NEÓN
     ============================================================ -->
     <div id="cart">
         <h3><i class="fas fa-crown"></i> Tu carrito</h3>
@@ -1067,7 +759,7 @@
     </div>
 
     <!-- ============================================================
-    SCRIPT — mejorado
+    SCRIPT
     ============================================================ -->
     <script>
         (function() {
@@ -1077,104 +769,74 @@
             const splash = document.getElementById('splash');
             setTimeout(() => {
                 splash.classList.add('hidden');
-                setTimeout(() => {
-                    splash.style.display = 'none';
-                }, 800);
+                setTimeout(() => { splash.style.display = 'none'; }, 1200);
             }, 3000);
+
+            // ============================================================
+            //  SCROLL A CATÁLOGOS
+            // ============================================================
+            window.scrollToCatalogs = function() {
+                const catalogs = document.getElementById('catalogSection');
+                if (catalogs) {
+                    catalogs.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            };
 
             // ============================================================
             //  PRODUCTOS
             // ============================================================
             const products = [
-                // Audífonos Bluetooth
-                { id: 1, nombre: "Audífonos Pro X1", precio: 450, icono: "fa-headphones", categoria: "audifonos",
-                desc: "Cancelación de ruido · 40h" },
-                { id: 2, nombre: "Audífonos Ultra Bass", precio: 320, icono: "fa-headphones", categoria: "audifonos",
-                    desc: "Bajos profundos · 5.2" },
-                { id: 3, nombre: "Audífonos Studio Pro", precio: 680, icono: "fa-headphones", categoria: "audifonos",
-                    desc: "Sonido envolvente" },
-                { id: 4, nombre: "Audífonos Sports Fit", precio: 250, icono: "fa-headphones", categoria: "audifonos",
-                    desc: "Resistentes al agua" },
-                { id: 5, nombre: "Audífonos Elite", precio: 550, icono: "fa-headphones", categoria: "audifonos",
-                    desc: "Alta fidelidad · 50h" },
+                { id: 1, nombre: "Audífonos Pro X1", precio: 450, icono: "fa-headphones", categoria: "audifonos", desc: "Cancelación de ruido activa, 40h de batería, sonido envolvente premium.", imagen: "https://cdn.phototourl.com/free/2026-06-30-ee27ce42-454e-4fb9-aaac-bb20b9548d3b.jpg" },
+                { id: 2, nombre: "Audífonos Ultra Bass", precio: 320, icono: "fa-headphones", categoria: "audifonos", desc: "Bajos profundos, Bluetooth 5.2, diseño ergonómico.", imagen: "https://cdn.phototourl.com/free/2026-06-30-ee27ce42-454e-4fb9-aaac-bb20b9548d3b.jpg" },
+                { id: 3, nombre: "Audífonos Studio Pro", precio: 680, icono: "fa-headphones", categoria: "audifonos", desc: "Sonido de estudio, conectividad multipunto, carga rápida.", imagen: "https://cdn.phototourl.com/free/2026-06-30-ee27ce42-454e-4fb9-aaac-bb20b9548d3b.jpg" },
+                { id: 4, nombre: "Audífonos Sports Fit", precio: 250, icono: "fa-headphones", categoria: "audifonos", desc: "Resistentes al agua, diseño deportivo, ajuste seguro.", imagen: "https://cdn.phototourl.com/free/2026-06-30-ee27ce42-454e-4fb9-aaac-bb20b9548d3b.jpg" },
+                { id: 5, nombre: "Audífonos Elite", precio: 550, icono: "fa-headphones", categoria: "audifonos", desc: "Alta fidelidad, 50h de batería, cancelación de ruido.", imagen: "https://cdn.phototourl.com/free/2026-06-30-ee27ce42-454e-4fb9-aaac-bb20b9548d3b.jpg" },
+                { id: 6, nombre: "SmartWatch Ultra", precio: 850, icono: "fa-clock", categoria: "relojes", desc: "GPS integrado, monitoreo cardíaco, 7 días de batería." },
+                { id: 7, nombre: "SmartWatch Fit", precio: 420, icono: "fa-clock", categoria: "relojes", desc: "Seguimiento deportivo, notificaciones, 5 ATM, diseño ligero." },
+                { id: 8, nombre: "SmartWatch Classic", precio: 1200, icono: "fa-clock", categoria: "relojes", desc: "Acero inoxidable, esfera premium, siempre encendido." },
+                { id: 9, nombre: "SmartWatch Kids", precio: 220, icono: "fa-clock", categoria: "relojes", desc: "GPS, llamadas, diseño resistente para niños." },
+                { id: 10, nombre: "Cargador Rápido 65W", precio: 180, icono: "fa-bolt", categoria: "cargadores", desc: "Carga super rápida para laptop y celular, puertos USB-C." },
+                { id: 11, nombre: "Cargador Inalámbrico", precio: 220, icono: "fa-bolt", categoria: "cargadores", desc: "Carga rápida Qi, soporte ajustable, diseño minimalista." },
+                { id: 12, nombre: "Cargador Dual 40W", precio: 150, icono: "fa-bolt", categoria: "cargadores", desc: "2 puertos USB-C, carga inteligente, compacto." },
+                { id: 13, nombre: "Power Bank 20000mAh", precio: 350, icono: "fa-battery-full", categoria: "powerbanks", desc: "3 puertos, pantalla digital, carga rápida." },
+                { id: 14, nombre: "Power Bank Mini", precio: 180, icono: "fa-battery-full", categoria: "powerbanks", desc: "10000mAh, ultra delgado, ideal para viajes." },
+                { id: 15, nombre: "Power Bank Solar", precio: 420, icono: "fa-battery-full", categoria: "powerbanks", desc: "Carga solar, 25000mAh, resistente." },
+                { id: 16, nombre: "Bocina Boom 360", precio: 580, icono: "fa-volume-up", categoria: "bocinas", desc: "Sonido 360°, resistente al agua, 20h de batería." },
+                { id: 17, nombre: "Bocina Party Pro", precio: 890, icono: "fa-volume-up", categoria: "bocinas", desc: "100W de potencia, luces LED, karaoke, Bluetooth 5.0." },
+                { id: 18, nombre: "Bocina Mini", precio: 180, icono: "fa-volume-up", categoria: "bocinas", desc: "Portátil, 12h de batería, sonido claro." },
+                { id: 19, nombre: "Bocina Smart Home", precio: 420, icono: "fa-volume-up", categoria: "bocinas", desc: "Asistente de voz, WiFi y Bluetooth integrados." },
+                { id: 20, nombre: "Cámara 4K Action", precio: 1200, icono: "fa-camera", categoria: "camaras", desc: "4K 60fps, estabilización, sumergible." },
+                { id: 21, nombre: "Cámara Web Pro", precio: 350, icono: "fa-camera", categoria: "camaras", desc: "4K, micrófono dual, enfoque automático." },
+                { id: 22, nombre: "Cámara 360°", precio: 1800, icono: "fa-camera", categoria: "camaras", desc: "Video 360°, 5.7K, estabilización avanzada." },
+                { id: 23, nombre: "Cámara Interior", precio: 450, icono: "fa-camera", categoria: "camaras", desc: "1080p, visión nocturna, detección de movimiento." },
+                { id: 24, nombre: "Cable USB-C Premium", precio: 80, icono: "fa-plug", categoria: "cables", desc: "Carga rápida, trenzado, 2 metros, compatible universal." },
+                { id: 25, nombre: "Cable Lightning Pro", precio: 90, icono: "fa-plug", categoria: "cables", desc: "Certificado MFi, trenzado, carga rápida para Apple." },
+                { id: 26, nombre: "Cable 3 en 1", precio: 120, icono: "fa-plug", categoria: "cables", desc: "USB-C, Lightning, Micro USB, trenzado." },
+                { id: 27, nombre: "Funda Transparente", precio: 120, icono: "fa-mobile-alt", categoria: "fundas", desc: "Anti-amarillamiento, protección contra caídas, diseño delgado." },
+                { id: 28, nombre: "Funda Anti-shock", precio: 180, icono: "fa-mobile-alt", categoria: "fundas", desc: "Protección militar, resistente a golpes." },
+                { id: 29, nombre: "Protector de Pantalla", precio: 150, icono: "fa-mobile-alt", categoria: "fundas", desc: "Vidrio templado 9H, anti-huellas, instalación fácil." },
+                { id: 30, nombre: "Soporte Magnético", precio: 180, icono: "fa-grip", categoria: "soportes", desc: "Para celular y tablet, ajuste 360°, base antideslizante." },
+                { id: 31, nombre: "Soporte Ventilación", precio: 120, icono: "fa-grip", categoria: "soportes", desc: "Sujeción segura, compatible con todos los celulares." },
+                { id: 32, nombre: "Soporte de Mesa", precio: 220, icono: "fa-grip", categoria: "soportes", desc: "Ajuste de altura, plegable, base estable." },
+                { id: 33, nombre: "Mini Impresora Térmica", precio: 680, icono: "fa-print", categoria: "impresoras", desc: "Impresión sin tinta, conectividad Bluetooth, app exclusiva." },
+                { id: 34, nombre: "Impresora Portátil", precio: 450, icono: "fa-print", categoria: "impresoras", desc: "Tamaño bolsillo, papel térmico incluido, fácil de usar." },
+                { id: 35, nombre: "Impresora de Etiquetas", precio: 520, icono: "fa-print", categoria: "impresoras", desc: "Termal, ideal para negocios, conexión Bluetooth." },
+            ];
 
-                // Smartwatches
-                { id: 6, nombre: "SmartWatch Ultra", precio: 850, icono: "fa-clock", categoria: "relojes",
-                    desc: "GPS · Cardíaco · 7 días" },
-                { id: 7, nombre: "SmartWatch Fit", precio: 420, icono: "fa-clock", categoria: "relojes",
-                    desc: "Deporte · 5 ATM" },
-                { id: 8, nombre: "SmartWatch Classic", precio: 1200, icono: "fa-clock", categoria: "relojes",
-                    desc: "Acero inoxidable" },
-                { id: 9, nombre: "SmartWatch Kids", precio: 220, icono: "fa-clock", categoria: "relojes",
-                    desc: "GPS · Llamadas" },
-
-                // Cargadores rápidos
-                { id: 10, nombre: "Cargador Rápido 65W", precio: 180, icono: "fa-bolt", categoria: "cargadores",
-                    desc: "USB-C · Laptop y celular" },
-                { id: 11, nombre: "Cargador Inalámbrico", precio: 220, icono: "fa-bolt", categoria: "cargadores",
-                    desc: "Qi · Soporte ajustable" },
-                { id: 12, nombre: "Cargador Dual 40W", precio: 150, icono: "fa-bolt", categoria: "cargadores",
-                    desc: "2 puertos · Carga inteligente" },
-
-                // Power Banks
-                { id: 13, nombre: "Power Bank 20000mAh", precio: 350, icono: "fa-battery-full", categoria: "powerbanks",
-                    desc: "3 puertos · Pantalla" },
-                { id: 14, nombre: "Power Bank Mini", precio: 180, icono: "fa-battery-full", categoria: "powerbanks",
-                    desc: "10000mAh · Delgado" },
-                { id: 15, nombre: "Power Bank Solar", precio: 420, icono: "fa-battery-full", categoria: "powerbanks",
-                    desc: "Carga solar · 25000mAh" },
-
-                // Bocinas Bluetooth
-                { id: 16, nombre: "Bocina Boom 360", precio: 580, icono: "fa-volume-up", categoria: "bocinas",
-                    desc: "Sonido 360° · Resistente" },
-                { id: 17, nombre: "Bocina Party Pro", precio: 890, icono: "fa-volume-up", categoria: "bocinas",
-                    desc: "100W · Luces LED" },
-                { id: 18, nombre: "Bocina Mini", precio: 180, icono: "fa-volume-up", categoria: "bocinas",
-                    desc: "Portátil · 12h" },
-                { id: 19, nombre: "Bocina Smart Home", precio: 420, icono: "fa-volume-up", categoria: "bocinas",
-                    desc: "Asistente · WiFi" },
-
-                // Cámaras Wi-Fi
-                { id: 20, nombre: "Cámara 4K Action", precio: 1200, icono: "fa-camera", categoria: "camaras",
-                    desc: "4K 60fps · Estabilización" },
-                { id: 21, nombre: "Cámara Web Pro", precio: 350, icono: "fa-camera", categoria: "camaras",
-                    desc: "4K · Micrófono dual" },
-                { id: 22, nombre: "Cámara 360°", precio: 1800, icono: "fa-camera", categoria: "camaras",
-                    desc: "5.7K · Estabilización" },
-                { id: 23, nombre: "Cámara Interior", precio: 450, icono: "fa-camera", categoria: "camaras",
-                    desc: "1080p · Visión nocturna" },
-
-                // Cables de carga
-                { id: 24, nombre: "Cable USB-C Premium", precio: 80, icono: "fa-plug", categoria: "cables",
-                    desc: "Trenzado · 2 metros" },
-                { id: 25, nombre: "Cable Lightning Pro", precio: 90, icono: "fa-plug", categoria: "cables",
-                    desc: "MFi · Trenzado" },
-                { id: 26, nombre: "Cable 3 en 1", precio: 120, icono: "fa-plug", categoria: "cables",
-                    desc: "USB-C · Lightning · Micro" },
-
-                // Fundas y protectores
-                { id: 27, nombre: "Funda Transparente", precio: 120, icono: "fa-mobile-alt", categoria: "fundas",
-                    desc: "Anti-amarillamiento" },
-                { id: 28, nombre: "Funda Anti-shock", precio: 180, icono: "fa-mobile-alt", categoria: "fundas",
-                    desc: "Protección militar" },
-                { id: 29, nombre: "Protector de Pantalla", precio: 150, icono: "fa-mobile-alt", categoria: "fundas",
-                    desc: "Vidrio 9H · Anti-huellas" },
-
-                // Soportes para celular
-                { id: 30, nombre: "Soporte Magnético", precio: 180, icono: "fa-grip", categoria: "soportes",
-                    desc: "360° · Antideslizante" },
-                { id: 31, nombre: "Soporte Ventilación", precio: 120, icono: "fa-grip", categoria: "soportes",
-                    desc: "Sujeción segura" },
-                { id: 32, nombre: "Soporte de Mesa", precio: 220, icono: "fa-grip", categoria: "soportes",
-                    desc: "Ajuste de altura" },
-
-                // Mini impresoras térmicas
-                { id: 33, nombre: "Mini Impresora Térmica", precio: 680, icono: "fa-print", categoria: "impresoras",
-                    desc: "Bluetooth · Sin tinta" },
-                { id: 34, nombre: "Impresora Portátil", precio: 450, icono: "fa-print", categoria: "impresoras",
-                    desc: "Tamaño bolsillo" },
-                { id: 35, nombre: "Impresora de Etiquetas", precio: 520, icono: "fa-print", categoria: "impresoras",
-                    desc: "Termal · Negocios" },
+            // ============================================================
+            //  CATÁLOGOS
+            // ============================================================
+            const catalogos = [
+                { id: 'audifonos', nombre: 'Audífonos', icono: 'fa-headphones', imagen: 'https://cdn.phototourl.com/free/2026-06-30-ee27ce42-454e-4fb9-aaac-bb20b9548d3b.jpg' },
+                { id: 'relojes', nombre: 'Smartwatches', icono: 'fa-clock' },
+                { id: 'cargadores', nombre: 'Cargadores', icono: 'fa-bolt' },
+                { id: 'powerbanks', nombre: 'Power Banks', icono: 'fa-battery-full' },
+                { id: 'bocinas', nombre: 'Bocinas', icono: 'fa-volume-up' },
+                { id: 'camaras', nombre: 'Cámaras', icono: 'fa-camera' },
+                { id: 'cables', nombre: 'Cables', icono: 'fa-plug' },
+                { id: 'fundas', nombre: 'Fundas', icono: 'fa-mobile-alt' },
+                { id: 'soportes', nombre: 'Soportes', icono: 'fa-grip' },
+                { id: 'impresoras', nombre: 'Impresoras', icono: 'fa-print' },
             ];
 
             // ============================================================
@@ -1182,105 +844,100 @@
             // ============================================================
             let cart = [];
             let quantities = {};
-            let currentFilter = 'todos';
-            let searchTerm = '';
 
             // ============================================================
             //  DOM REFS
             // ============================================================
-            const scrollContainer = document.getElementById('productScroll');
+            const catalogSection = document.getElementById('catalogSection');
+            const catalogGrid = document.getElementById('catalogGrid');
+            const productDetailSection = document.getElementById('productDetailSection');
+            const productList = document.getElementById('productList');
+            const detailTitle = document.getElementById('detailTitle');
             const cartItemsEl = document.getElementById('cartItems');
             const cartTotalEl = document.getElementById('cartTotal');
             const cartCountEl = document.getElementById('cartCount');
             const cartEl = document.getElementById('cart');
-            const categoryLinks = document.querySelectorAll('.cat-item');
-            const searchInput = document.getElementById('searchInput');
 
             // ============================================================
-            //  RENDER PRODUCTOS
+            //  RENDER CATÁLOGOS
             // ============================================================
-            function renderProducts(filter, search) {
-                let filtered = filter === 'todos' ? products : products.filter(p => p.categoria === filter);
-
-                if (search && search.trim() !== '') {
-                    const term = search.toLowerCase().trim();
-                    filtered = filtered.filter(p =>
-                        p.nombre.toLowerCase().includes(term) ||
-                        p.desc.toLowerCase().includes(term)
-                    );
-                }
-
-                if (filtered.length === 0) {
-                    scrollContainer.innerHTML = `
-                        <div style="min-width:100%; text-align:center; padding:3rem 1rem; color:var(--text-muted); opacity:0.4;">
-                            <i class="fas fa-search" style="font-size:3rem; display:block; margin-bottom:0.8rem; opacity:0.3;"></i>
-                            <p style="font-size:1.1rem;">No se encontraron productos</p>
-                            <p style="font-size:0.85rem; opacity:0.6; margin-top:0.3rem;">Intenta con otra búsqueda o categoría</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                scrollContainer.innerHTML = filtered.map(p => {
-                    const qty = quantities[p.id] || 1;
-                    const badge = p.precio > 800 ? 'Premium' : p.precio > 400 ? 'Destacado' : '';
+            function renderCatalogos() {
+                catalogGrid.innerHTML = catalogos.map(cat => {
+                    const count = products.filter(p => p.categoria === cat.id).length;
+                    const hasImage = cat.imagen && cat.imagen !== '';
                     return `
-                        <div class="product-card" data-id="${p.id}">
-                            ${badge ? `<span class="product-badge">${badge}</span>` : ''}
-                            <span class="product-icon"><i class="fas ${p.icono}"></i></span>
-                            <div class="product-name">${p.nombre}</div>
-                            <div class="product-desc">${p.desc}</div>
-                            <div class="product-price">Q ${p.precio} <small>Q ${Math.round(p.precio * 1.2)}</small></div>
-                            <div class="product-actions">
-                                <div class="qty-control">
-                                    <button class="qty-btn" onclick="changeQty(${p.id}, -1)"><i class="fas fa-minus"></i></button>
-                                    <span class="qty-display" id="qty-${p.id}">${qty}</span>
-                                    <button class="qty-btn" onclick="changeQty(${p.id}, 1)"><i class="fas fa-plus"></i></button>
-                                </div>
-                                <button class="btn-add" onclick="addToCart(${p.id})"><i class="fas fa-plus"></i> Agregar</button>
-                            </div>
+                        <div class="catalog-card" onclick="openCatalog('${cat.id}')">
+                            ${hasImage ? `<img src="${cat.imagen}" alt="${cat.nombre}" class="catalog-image" loading="lazy">` : `<span class="catalog-icon"><i class="fas ${cat.icono}"></i></span>`}
+                            <div class="catalog-name">${cat.nombre}</div>
+                            <div class="catalog-count">${count} productos</div>
                         </div>
                     `;
                 }).join('');
             }
 
             // ============================================================
-            //  FILTRAR Y BUSCAR
+            //  ABRIR CATÁLOGO
             // ============================================================
-            function filterProducts(categoria) {
-                currentFilter = categoria;
-                renderProducts(categoria, searchTerm);
-                categoryLinks.forEach(el => {
-                    el.classList.remove('active');
-                    if (el.dataset.cat === categoria) el.classList.add('active');
-                });
-            }
+            window.openCatalog = function(categoriaId) {
+                const cat = catalogos.find(c => c.id === categoriaId);
+                if (!cat) return;
 
-            window.searchProducts = function() {
-                searchTerm = searchInput.value;
-                renderProducts(currentFilter, searchTerm);
+                const filtered = products.filter(p => p.categoria === categoriaId);
+                detailTitle.textContent = cat.nombre;
+
+                productList.innerHTML = filtered.map(p => {
+                    const qty = quantities[p.id] || 1;
+                    const hasImage = p.imagen && p.imagen !== '';
+                    return `
+                        <div class="product-detail-item" data-id="${p.id}">
+                            <div class="product-detail-image">
+                                ${hasImage ? `<img src="${p.imagen}" alt="${p.nombre}" loading="lazy">` : `<span class="icon-placeholder"><i class="fas ${p.icono}"></i></span>`}
+                            </div>
+                            <div class="product-detail-info">
+                                <div class="product-detail-name">${p.nombre}</div>
+                                <div class="product-detail-desc">${p.desc}</div>
+                                <div class="product-detail-price">Q ${p.precio}</div>
+                                <div class="product-detail-actions">
+                                    <div class="qty-control-detail">
+                                        <button class="qty-btn-detail" onclick="changeQtyDetail(${p.id}, -1)"><i class="fas fa-minus"></i></button>
+                                        <span class="qty-display-detail" id="qty-detail-${p.id}">${qty}</span>
+                                        <button class="qty-btn-detail" onclick="changeQtyDetail(${p.id}, 1)"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                    <button class="btn-add-detail" onclick="addToCartDetail(${p.id})"><i class="fas fa-plus"></i> Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                catalogSection.style.display = 'none';
+                productDetailSection.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
-            searchInput.addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    searchProducts();
-                }
-            });
+            // ============================================================
+            //  VOLVER A INICIO
+            // ============================================================
+            window.goHome = function() {
+                catalogSection.style.display = 'block';
+                productDetailSection.classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
 
             // ============================================================
             //  CANTIDAD
             // ============================================================
-            window.changeQty = function(id, delta) {
+            window.changeQtyDetail = function(id, delta) {
                 if (!quantities[id]) quantities[id] = 1;
                 quantities[id] = Math.max(1, quantities[id] + delta);
-                const display = document.getElementById(`qty-${id}`);
+                const display = document.getElementById(`qty-detail-${id}`);
                 if (display) display.textContent = quantities[id];
             };
 
             // ============================================================
-            //  CARRITO
+            //  AGREGAR AL CARRITO
             // ============================================================
-            window.addToCart = function(id) {
+            window.addToCartDetail = function(id) {
                 const product = products.find(p => p.id === id);
                 if (!product) return;
                 const qty = quantities[id] || 1;
@@ -1293,12 +950,12 @@
                 }
 
                 quantities[id] = 1;
-                const display = document.getElementById(`qty-${id}`);
+                const display = document.getElementById(`qty-detail-${id}`);
                 if (display) display.textContent = 1;
 
                 updateCartUI();
 
-                const btn = document.querySelector(`.product-card[data-id="${id}"] .btn-add`);
+                const btn = document.querySelector(`.product-detail-item[data-id="${id}"] .btn-add-detail`);
                 if (btn) {
                     const orig = btn.innerHTML;
                     btn.innerHTML = '<i class="fas fa-check"></i> Agregado';
@@ -1310,6 +967,9 @@
                 }
             };
 
+            // ============================================================
+            //  CARRITO
+            // ============================================================
             window.removeFromCart = function(id) {
                 cart = cart.filter(p => p.id !== id);
                 updateCartUI();
@@ -1336,8 +996,7 @@
             };
 
             function updateCartUI() {
-                let total = 0,
-                    count = 0;
+                let total = 0, count = 0;
                 if (cart.length === 0) {
                     cartItemsEl.innerHTML = `
                         <div class="cart-empty">
@@ -1365,17 +1024,6 @@
             }
 
             // ============================================================
-            //  EVENTOS CATEGORÍA
-            // ============================================================
-            categoryLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const cat = this.dataset.cat;
-                    filterProducts(cat);
-                });
-            });
-
-            // ============================================================
             //  CERRAR CARRITO
             // ============================================================
             document.addEventListener('click', (e) => {
@@ -1388,11 +1036,10 @@
             // ============================================================
             //  INICIO
             // ============================================================
-            renderProducts('todos', '');
+            renderCatalogos();
             updateCartUI();
-            document.querySelector('.cat-item[data-cat="todos"]')?.classList.add('active');
 
-            console.log('✦ SHEIBIS — Tienda premium estilo Amazon mejorado al 100%');
+            console.log('✦ SHEIBIS — Todo a tu alcance');
         })();
     </script>
 </body>
